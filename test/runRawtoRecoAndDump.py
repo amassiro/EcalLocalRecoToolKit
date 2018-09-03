@@ -71,7 +71,7 @@ process.configurationMetadata = cms.untracked.PSet(
 # Other statements
 from Configuration.AlCa.GlobalTag import GlobalTag
 
-process.GlobalTag = GlobalTag(process.GlobalTag, '94X_mc2017_realistic_v10', '')
+process.GlobalTag = GlobalTag(process.GlobalTag, '103X_upgrade2018_realistic_v2', '')
 
 
 
