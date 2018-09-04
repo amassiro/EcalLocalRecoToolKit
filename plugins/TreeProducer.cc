@@ -147,7 +147,9 @@ private:
   UShort_t _event;      
   float _onlineEnergyEB[61200];
   float _onlineEnergyEE[14648];
-
+  int _size_EB;      
+  int _size_EE;      
+  
 };
 
 //
@@ -183,6 +185,8 @@ TreeProducer::TreeProducer(const edm::ParameterSet& iConfig)
   outTree->Branch("event",             &_event,           "event/i");
   outTree->Branch("onlineEnergyEB",       _onlineEnergyEB,    "onlineEnergyEB[61200]/F");
   outTree->Branch("onlineEnergyEE",       _onlineEnergyEE,    "onlineEnergyEE[14648]/F");
+  outTree->Branch("size_EB",             &_size_EB,           "size_EB/I");
+  outTree->Branch("size_EE",             &_size_EE,           "size_EE/I");
   
 }
 
@@ -248,6 +252,8 @@ TreeProducer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup) {
   iSetup.get<IdealGeometryRecord>().get(eTTmap);
   
   
+  _size_EB = ebrechits->size();
+  _size_EE = eerechits->size();
   
   
   for (EcalUncalibratedRecHitCollection::const_iterator itrechit = ebrechits->begin(); itrechit != ebrechits->end(); itrechit++ ) {

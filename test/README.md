@@ -26,8 +26,7 @@ Time measurement:
      
 
     cd /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/CMSSW_10_3_0_pre2/src/ECALValidation/EcalLocalRecoToolKit/test
-    cmsenv
-     
+    cmsenv 
     cmsRun runRawtoRecoAndTime.py  \
          inputFiles=file:/eos/cms/store/relval/CMSSW_10_3_0_pre2/RelValZEE_13/GEN-SIM-DIGI-RAW/103X_upgrade2018_realistic_v2_resub-v1/20000/0788D0C5-6795-7C45-9548-47FD08113E24.root \
          maxEvents=-1  &> dump.txt
@@ -36,13 +35,17 @@ Time measurement:
     root -l plot/drawTime.cxx\(\"dump.time.txt\"\) 
 
     
-    cd /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/CMSSW_10_3_0_pre2/src/ECALValidation/EcalLocalRecoToolKit/test
+    cd /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/StandardCMSSW/CMSSW_10_3_0_pre2/src/ECALValidation/EcalLocalRecoToolKit/test
     cmsenv
     cmsRun runRawtoRecoAndTime.py  \
          inputFiles=file:/eos/cms/store/relval/CMSSW_10_3_0_pre2/RelValZEE_13/GEN-SIM-DIGI-RAW/103X_upgrade2018_realistic_v2_resub-v1/20000/0788D0C5-6795-7C45-9548-47FD08113E24.root \
          maxEvents=-1  &> dump.2.txt
     cat dump.2.txt | grep reconstruction_step &> dump.old.time.txt 
+    root -l plot/drawTime.cxx\(\"/afs/cern.ch/user/a/amassiro/work/ECAL/GPU/StandardCMSSW/CMSSW_10_3_0_pre2/src/ECALValidation/EcalLocalRecoToolKit/test/dump.old.time.txt\"\) 
     
+    
+    root -l plot/drawTimeCompare.cxx\(\"/afs/cern.ch/user/a/amassiro/work/ECAL/GPU/StandardCMSSW/CMSSW_10_3_0_pre2/src/ECALValidation/EcalLocalRecoToolKit/test/dump.old.time.txt\",\"dump.time.txt\"\) 
+
     
 Compare reconstructed energy:
 
@@ -53,12 +56,28 @@ Compare reconstructed energy:
      
     cd /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/CMSSW_10_3_0_pre2/src/ECALValidation/EcalLocalRecoToolKit/test
     cmsenv
+    cmsRun runRawtoRecoAndDump.py  \
+         inputFiles=file:/eos/cms/store/relval/CMSSW_10_3_0_pre2/RelValZEE_13/GEN-SIM-DIGI-RAW/103X_upgrade2018_realistic_v2_resub-v1/20000/0788D0C5-6795-7C45-9548-47FD08113E24.root \
+         maxEvents=-1   outputFile=rawtoworld-zee.relval.root
 
+    cd /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/StandardCMSSW/CMSSW_10_3_0_pre2/src/ECALValidation/EcalLocalRecoToolKit/test
+    cmsenv
     cmsRun runRawtoRecoAndDump.py  \
          inputFiles=file:/eos/cms/store/relval/CMSSW_10_3_0_pre2/RelValZEE_13/GEN-SIM-DIGI-RAW/103X_upgrade2018_realistic_v2_resub-v1/20000/0788D0C5-6795-7C45-9548-47FD08113E24.root \
          maxEvents=-1   outputFile=rawtoworld-zee.relval.old.root
          
 
 Plot:
+
+    r99t rawtoworld-zee.relval.root
+    
+    TTree* tree = (TTree*) _file0->Get("TreeProducer/tree");
+    tree->Draw("size_EB + size_EE");
+
+    tree->Draw("size_EB");
+
+    tree->Draw("size_EE");
+    
+
 
 

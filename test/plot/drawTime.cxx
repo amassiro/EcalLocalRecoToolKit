@@ -14,15 +14,10 @@ void drawTime (std::string nameFile) {
     return false;
   }
   
-  int num_layer = 0;
   while(!file.eof()) {
     getline(file,buffer);
     if (buffer != "" && buffer.at(0) != '#'){ ///---> save from empty line at the end!
       std::stringstream line( buffer );  
-      
-      int ilayer;
-      int idet;
-      int iEdge;
       
       line >> temp_name; // std::cout << " temp_name = " << temp_name << std::endl;  // skip
       line >> temp_name; // std::cout << " temp_name = " << temp_name << std::endl; // skip
