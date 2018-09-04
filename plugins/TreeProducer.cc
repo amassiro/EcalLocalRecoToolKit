@@ -234,10 +234,10 @@ TreeProducer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup) {
   }
   
   
-  std::cout << " ~~ " << std::endl;
-  std::cout << " > ebrechits->size() = " << ebrechits->size() << std::endl;
-  std::cout << " > eerechits->size() = " << eerechits->size() << std::endl;
-  std::cout << " ~~ " << std::endl;
+//   std::cout << " ~~ " << std::endl;
+//   std::cout << " > ebrechits->size() = " << ebrechits->size() << std::endl;
+//   std::cout << " > eerechits->size() = " << eerechits->size() << std::endl;
+//   std::cout << " ~~ " << std::endl;
   
   edm::ESHandle<CaloGeometry> pGeometry;
   iSetup.get<CaloGeometryRecord>().get(pGeometry);
