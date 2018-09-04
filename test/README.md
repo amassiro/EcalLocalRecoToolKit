@@ -52,6 +52,13 @@ Time measurement:
     
     root -l plot/drawTimeCompare.cxx\(\"/afs/cern.ch/user/a/amassiro/work/ECAL/GPU/StandardCMSSW/CMSSW_10_3_0_pre2/src/ECALValidation/EcalLocalRecoToolKit/test/dump.old.time.txt\",\"dump.time.txt\"\) 
 
+
+Check iterations:
+
+    root -l plot/drawIterations.cxx\(\"dump.iter.txt\"\) 
+
+
+
     
 Compare reconstructed energy:
 
