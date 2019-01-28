@@ -86,8 +86,28 @@ Plot:
     r99t rawtoworld-zee.data.root
     
     TTree* tree = (TTree*) _file0->Get("TreeProducer/tree");
-    tree->Draw("size_EB + size_EE");
+    tree->Draw("size_EB + size_EE >>h1(100,0,1000)");
+    tree->Draw("size_EB >> h2(100,0,1000)", "", "same");
+    tree->Draw("size_EE >> h3(100,0,1000)", "", "same");
 
+    h1->SetLineColor(kBlack)
+    h2->SetLineColor(kRed)
+    h3->SetLineColor(kBlue)
+    
+    TLegend* leg = new TLegend(0.5,0.7,0.9,0.9)
+    leg->AddEntry(h1, "size EB+EE")
+    leg->AddEntry(h2, "size EB")
+    leg->AddEntry(h3, "size EE")
+    leg->Draw()
+    
+    
+    r99t StandardPU.root  HighPU.root   plot/drawDimension.cxx
+    
+    
+    
+    
+    
+    
     tree->Draw("size_EB");
 
     tree->Draw("size_EE");

@@ -195,11 +195,33 @@ process.recoPath = cms.Path(
     *process.hbheprerecogpu
 )
 
+
+# ----------------------------------
+# ---- run the dumper for ECAL
+# ----------------------------------
+
+
+process.TFileService = cms.Service("TFileService",
+     fileName = cms.string(options.outputFile)
+)
+
+process.TreeProducer = cms.EDAnalyzer('TreeProducer',
+                           EcalUncalibRecHitsEBCollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEB"),
+                           EcalUncalibRecHitsEECollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEE"),
+                           )
+
+process.TreeProducer_step = cms.Path(process.TreeProducer)
+
+
+
+
+
 process.schedule = cms.Schedule(
     process.bunchSpacing,
     process.digiPath,
     process.recoPath,
-#    process.ecalecalLocalRecoSequence
+#    process.ecalecalLocalRecoSequence,
+    process.TreeProducer_step,
     process.finalize
 )
 
