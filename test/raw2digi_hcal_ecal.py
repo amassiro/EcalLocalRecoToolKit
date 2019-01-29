@@ -168,6 +168,9 @@ process.load("EventFilter.HcalRawToDigi.HcalRawToDigi_cfi")
 process.load("EventFilter.EcalRawToDigi.EcalUnpackerData_cfi")
 process.load("RecoLuminosity.LumiProducer.bunchSpacingProducer_cfi")
 
+process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHitGPU_cfi")
+
+
 #process.hcalDigis.silent = cms.untracked.bool(False)
 process.hcalDigis.InputLabel = rawTag
 process.ecalDigis = process.ecalEBunpacker.clone()
@@ -191,6 +194,7 @@ process.recoPath = cms.Path(
     *process.hfreco
     *process.hbheprereco
     *process.ecalMultiFitUncalibRecHit
+    *process.ecalMultiFitUncalibRecHitGPU
     #*process.ecalRecHit
     *process.hbheprerecogpu
 )
