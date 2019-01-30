@@ -29,15 +29,7 @@ options.register('year',
 
 options.parseArguments()
 
-#print "YEAR = ", options.year, " TYPE = ", options.inputType
-
-#
-# for dump!
-#
-options.inputType = "globalRunHighPU"
-options.year = 2017  
-#
-#
+print "YEAR = ", options.year, " TYPE = ", options.inputType
 
 
 if options.year == 2017:
@@ -91,12 +83,12 @@ if options.year == 2017:
 
 
     if options.inputType == 'globalRunHighPU':
-        GT = '101X_dataRun2_Prompt_v11'
+        GT = '100X_dataRun2_Prompt_v1'
         infile = ["file:/data/patatrack/dalfonso/data/2018/Run2018E_HLTPhysics_325308/FB454F42-97B6-DC4B-88FF-0063C79B9F6C.root"]
         rawTag    = cms.InputTag('rawDataCollector')
 
     if options.inputType == 'globalRunStandardPU':
-        GT = '101X_dataRun2_Prompt_v11'
+        GT = '100X_dataRun2_Prompt_v1'
         infile = ["file:/data/patatrack/dalfonso/data/2018/Run2018B_HLTPhysics_319300/D6C0583D-5881-E811-9EB8-FA163EAFECF2.root"]
         rawTag    = cms.InputTag('rawDataCollector')
 
@@ -176,7 +168,6 @@ process.load("EventFilter.HcalRawToDigi.HcalRawToDigi_cfi")
 process.load("EventFilter.EcalRawToDigi.EcalUnpackerData_cfi")
 process.load("RecoLuminosity.LumiProducer.bunchSpacingProducer_cfi")
 
-
 #process.hcalDigis.silent = cms.untracked.bool(False)
 process.hcalDigis.InputLabel = rawTag
 process.ecalDigis = process.ecalEBunpacker.clone()
@@ -190,18 +181,18 @@ process.bunchSpacing = cms.Path(
 )
 
 process.digiPath = cms.Path(
-    #process.hcalDigis
-    process.ecalDigis
+    process.hcalDigis
+    *process.ecalDigis
 )
 
 process.recoPath = cms.Path(
-    #process.horeco
-    #*process.hfprereco
-    #*process.hfreco
-    #*process.hbheprereco
-    process.ecalMultiFitUncalibRecHit
+    process.horeco
+    *process.hfprereco
+    *process.hfreco
+    *process.hbheprereco
+    *process.ecalMultiFitUncalibRecHit
     #*process.ecalRecHit
-    #*process.hbheprerecogpu
+    *process.hbheprerecogpu
 )
 
 
@@ -210,16 +201,16 @@ process.recoPath = cms.Path(
 # ----------------------------------
 
 
-#process.TFileService = cms.Service("TFileService",
-     #fileName = cms.string(options.outputFile)
-#)
+process.TFileService = cms.Service("TFileService",
+     fileName = cms.string(options.outputFile)
+)
 
-#process.TreeProducer = cms.EDAnalyzer('TreeProducer',
-                           #EcalUncalibRecHitsEBCollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEB"),
-                           #EcalUncalibRecHitsEECollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEE"),
-                           #)
+process.TreeProducer = cms.EDAnalyzer('TreeProducer',
+                           EcalUncalibRecHitsEBCollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEB"),
+                           EcalUncalibRecHitsEECollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEE"),
+                           )
 
-#process.TreeProducer_step = cms.Path(process.TreeProducer)
+process.TreeProducer_step = cms.Path(process.TreeProducer)
 
 
 
@@ -230,7 +221,7 @@ process.schedule = cms.Schedule(
     process.digiPath,
     process.recoPath,
 #    process.ecalecalLocalRecoSequence,
-    #process.TreeProducer_step,
+    process.TreeProducer_step,
     process.finalize
 )
 
