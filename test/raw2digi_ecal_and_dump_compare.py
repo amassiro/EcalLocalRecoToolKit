@@ -170,9 +170,9 @@ process.Out = cms.OutputModule(
 # CMSSW/HCAL + ECAL non-DQM Related Module import
 #-----------------------------------------
 process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
-process.load("RecoLocalCalo.Configuration.hcalLocalReco_cff")
-process.load("RecoLocalCalo.Configuration.ecalLocalRecoSequence_cff")
-process.load("EventFilter.HcalRawToDigi.HcalRawToDigi_cfi")
+#process.load("RecoLocalCalo.Configuration.hcalLocalReco_cff")
+#process.load("RecoLocalCalo.Configuration.ecalLocalRecoSequence_cff")
+#process.load("EventFilter.HcalRawToDigi.HcalRawToDigi_cfi")
 process.load("EventFilter.EcalRawToDigi.EcalUnpackerData_cfi")
 process.load("RecoLuminosity.LumiProducer.bunchSpacingProducer_cfi")
 
@@ -180,11 +180,14 @@ process.load("RecoLuminosity.LumiProducer.bunchSpacingProducer_cfi")
 # ECAL on GPU
 process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_gpu_cfi")
 #
+# ECAL on CPU
+#
+process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_cfi")
 
 
 
 #process.hcalDigis.silent = cms.untracked.bool(False)
-process.hcalDigis.InputLabel = rawTag
+#process.hcalDigis.InputLabel = rawTag
 process.ecalDigis = process.ecalEBunpacker.clone()
 process.ecalDigis.InputLabel = rawTag
 #process.hbheprerecogpu.processQIE11 = cms.bool(True)
@@ -212,22 +215,26 @@ process.recoPath = cms.Path(
 )
 
 
+
+
 # ----------------------------------
 # ---- run the dumper for ECAL
 # ----------------------------------
 
 
-#process.TFileService = cms.Service("TFileService",
-     #fileName = cms.string(options.outputFile)
-#)
+process.TFileService = cms.Service("TFileService",
+     fileName = cms.string(options.outputFile)
+)
 
-#process.TreeProducer = cms.EDAnalyzer('TreeProducer',
-                           #EcalUncalibRecHitsEBCollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEB"),
-                           #EcalUncalibRecHitsEECollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEE"),
-                           #)
+process.TreeComparisonProducer = cms.EDAnalyzer('TreeComparisonProducer',
+                           EcalUncalibRecHitsEBCollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEB"),
+                           EcalUncalibRecHitsEECollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEE"),
 
-#process.TreeProducer_step = cms.Path(process.TreeProducer)
+                           SecondEcalUncalibRecHitsEBCollection = cms.InputTag("ecalMultiFitUncalibRecHitgpu","EcalUncalibRecHitsEBgpu"),
+                           SecondEcalUncalibRecHitsEECollection = cms.InputTag("ecalMultiFitUncalibRecHitgpu","EcalUncalibRecHitsEEgpu"),
+                           )
 
+process.TreeComparisonProducer_step = cms.Path(process.TreeComparisonProducer)
 
 
 
@@ -237,7 +244,7 @@ process.schedule = cms.Schedule(
     process.digiPath,
     process.recoPath,
 #    process.ecalecalLocalRecoSequence,
-    #process.TreeProducer_step,
+    process.TreeComparisonProducer_step,
     process.finalize
 )
 

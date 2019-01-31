@@ -29,15 +29,7 @@ options.register('year',
 
 options.parseArguments()
 
-#print "YEAR = ", options.year, " TYPE = ", options.inputType
-
-#
-# for dump!
-#
-options.inputType = "globalRunHighPU"
-options.year = 2017  
-#
-#
+print "YEAR = ", options.year, " TYPE = ", options.inputType
 
 
 if options.year == 2017:
@@ -90,23 +82,6 @@ if options.year == 2017:
         rawTag    = cms.InputTag('rawDataCollector')
 
 
-    if options.inputType == 'globalRunHighPU':
-        GT = '101X_dataRun2_Prompt_v11'
-        infile = ["file:/data/patatrack/dalfonso/data/2018/Run2018E_HLTPhysics_325308/FB454F42-97B6-DC4B-88FF-0063C79B9F6C.root"]
-        rawTag    = cms.InputTag('rawDataCollector')
-
-    if options.inputType == 'globalRunStandardPU':
-        GT = '101X_dataRun2_Prompt_v11'
-        infile = ["file:/data/patatrack/dalfonso/data/2018/Run2018B_HLTPhysics_319300/D6C0583D-5881-E811-9EB8-FA163EAFECF2.root"]
-        rawTag    = cms.InputTag('rawDataCollector')
-
-    #2018 high PU  --> /data/patatrack/dalfonso/data/2018/Run2018E_HLTPhysics_325308/FB454F42-97B6-DC4B-88FF-0063C79B9F6C.root
-    #2018 normal PU  --> /data/patatrack/dalfonso/data/2018/Run2018B_HLTPhysics_319300/D6C0583D-5881-E811-9EB8-FA163EAFECF2.root
-    
-
-
-
-
 if options.year == 2018:
     if options.inputType == 'localRun':
         sourceTag = 'HcalTBSource'
@@ -150,7 +125,7 @@ process.options = cms.untracked.PSet( wantSummary = cms.untracked.bool(True),
 # Files to process
 #-----------------
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000)
+    input = cms.untracked.int32(10)
     )
 
 process.source = cms.Source(
@@ -167,21 +142,18 @@ process.Out = cms.OutputModule(
 )
 
 #-----------------------------------------
-# CMSSW/HCAL + ECAL non-DQM Related Module import
+# CMSSW/Hcal non-DQM Related Module import
 #-----------------------------------------
 process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
 process.load("RecoLocalCalo.Configuration.hcalLocalReco_cff")
-process.load("RecoLocalCalo.Configuration.ecalLocalRecoSequence_cff")
+#process.load("RecoLocalCalo.Configuration.ecalLocalRecoSequence_cff")
 process.load("EventFilter.HcalRawToDigi.HcalRawToDigi_cfi")
 process.load("EventFilter.EcalRawToDigi.EcalUnpackerData_cfi")
 process.load("RecoLuminosity.LumiProducer.bunchSpacingProducer_cfi")
 
-#
-# ECAL on GPU
+# load both cpu and gpu plugins
 process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_gpu_cfi")
-#
-
-
+process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_cfi")
 
 #process.hcalDigis.silent = cms.untracked.bool(False)
 process.hcalDigis.InputLabel = rawTag
@@ -201,56 +173,27 @@ process.digiPath = cms.Path(
 )
 
 process.recoPath = cms.Path(
-    #process.horeco
-    #*process.hfprereco
-    #*process.hfreco
-    #*process.hbheprereco
+#    process.horeco
+#    *process.hfprereco
+#    *process.hfreco
+#    *process.hbheprereco
     process.ecalMultiFitUncalibRecHit
-    *process.ecalMultiFitUncalibRecHitgpu    # ----> GPU version
-    #*process.ecalRecHit
-    #*process.hbheprerecogpu
+    *process.ecalMultiFitUncalibRecHitgpu
+#    *process.ecalRecHit
+#    *process.hbheprerecogpu
 )
-
-
-# ----------------------------------
-# ---- run the dumper for ECAL
-# ----------------------------------
-
-
-#process.TFileService = cms.Service("TFileService",
-     #fileName = cms.string(options.outputFile)
-#)
-
-#process.TreeProducer = cms.EDAnalyzer('TreeProducer',
-                           #EcalUncalibRecHitsEBCollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEB"),
-                           #EcalUncalibRecHitsEECollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEE"),
-                           #)
-
-#process.TreeProducer_step = cms.Path(process.TreeProducer)
-
-
-
-
 
 process.schedule = cms.Schedule(
     process.bunchSpacing,
     process.digiPath,
     process.recoPath,
-#    process.ecalecalLocalRecoSequence,
-    #process.TreeProducer_step,
+#    process.ecalecalLocalRecoSequence
     process.finalize
 )
 
 process.options = cms.untracked.PSet(
-    numberOfThreads = cms.untracked.uint32(8),
-    numberOfStreams = cms.untracked.uint32(8),
+    numberOfThreads = cms.untracked.uint32(1),
+    numberOfStreams = cms.untracked.uint32(1),
     SkipEvent = cms.untracked.vstring('ProductNotFound'),
     wantSummary = cms.untracked.bool(True)
 )
-
-#print process.__dict__
-
-
-
-
-
