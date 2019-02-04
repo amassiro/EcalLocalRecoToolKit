@@ -24,11 +24,8 @@
   <use name="RecoEcal/EgammaCoreTools"/>
   <use name="RecoLocalCalo/EcalRecAlgos"/>
   <use name="eigen"/>
-  <use name="cuda"/>
   <flags LCGDICT_ARGS="--deep"/>
-  <flags CUDA_FLAGS="-Xptxas -O2,-v"/>
 </bin>
-
 
 
 

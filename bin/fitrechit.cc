@@ -95,7 +95,7 @@ int main(int argc, char** argv) {
     int nthreads_per_block = 256;
     int nblocks = (ebDigis->size() + nthreads_per_block - 1) / nthreads_per_block;
 
-    kernel_print<<<nblocks, nthreads_per_block>>>();
+    non_kernel_print(nblocks, nthreads_per_block);
     
     ievent++;
   }

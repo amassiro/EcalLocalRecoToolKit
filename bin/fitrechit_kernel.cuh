@@ -19,6 +19,8 @@
 
 __global__ void kernel_print() ;
 
+void non_kernel_print(int nblocks, int nthreads_per_block) ;
+
 
 // __global__ 
 // void kernel_print() {
