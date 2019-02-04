@@ -33,7 +33,7 @@
 
 
 
-<bin name="fitrechit" file="fitrechit.cc fitrechit_kernel.cu ">
+<bin name="fitrechit" file="fitrechit.cc fitrechit_kernel.cu">
   <use name="FWCore/Framework"/>
   <use name="FWCore/PluginManager"/>
   <use name="FWCore/ParameterSet"/>
@@ -54,7 +54,7 @@
   <use name="eigen"/>
   <use name="cuda"/>
   <flags LCGDICT_ARGS="--deep"/>
-  <flags CUDA_FLAGS="-Xptxas -O2,-v"/>
+<!--   <flags CUDA_FLAGS="-Xptxas -O2,-v"/> -->
 </bin>
 
 
