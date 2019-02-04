@@ -1,7 +1,9 @@
 <use name="root"/>
 <use name="boost"/>
-<use name="eigen"/>
-<use name="cuda"/>
+<!-- <use name="eigen"/> -->
+<!-- <use name="cuda"/> -->
+
+
 
 <bin name="fitrechit" file="fitrechit.cpp">
   <use name="FWCore/Framework"/>
@@ -21,6 +23,9 @@
   <use name="DataFormats/EcalDetId"/>
   <use name="RecoEcal/EgammaCoreTools"/>
   <use name="RecoLocalCalo/EcalRecAlgos"/>
+  <use name="eigen"/>
+  <use name="cuda"/>
   <flags LCGDICT_ARGS="--deep"/>
+  <flags CUDA_FLAGS="-Xptxas -O2,-v"/>
 </bin>
 
