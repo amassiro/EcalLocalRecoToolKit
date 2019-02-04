@@ -58,9 +58,18 @@
 #include <cuda_runtime.h>
 #include <assert.h>
 
-__global__  void kernel_print() {
+__global__ 
+void kernel_print() {
   printf("Hello!\n");
 }
+
+// __global__
+// void print(const char * message, size_t length) {
+//   //printf("blockIdx.x, threadIdx.x: %d, %d\n", blockIdx.x, threadIdx.x);
+//   for (size_t i = blockDim.x * blockIdx.x + threadIdx.x; i < length; i += blockDim.x * gridDim.x)
+//     printf("%c", message[i]);
+// }
+
   
 
 __global__  void kernel_reconstruct(
@@ -229,13 +238,13 @@ int main(int argc, char** argv) {
     
     cudaMalloc((void**)&d_digis_data,    digis_data.size() * sizeof(digis_type::value_type));
     cudaMalloc((void**)&d_ids,           ids.size() * sizeof(dids_type::value_type));
-    cudaMalloc((void**)&d_pedestals,     vpedestals.size() * sizeof(EcalPedestal));
-    cudaMalloc((void**)&d_gains,         vgains.size() * sizeof(EcalMGPAGainRatio));
-    cudaMalloc((void**)&d_xtals,         vxtals.size() * sizeof(EcalXtalGroupId));
-    cudaMalloc((void**)&d_shapes,        vpulses.size() * sizeof(EcalPulseShape));
-    cudaMalloc((void**)&d_covariances,   vcovariances.size() * sizeof(EcalPulseCovariance));
-    cudaMalloc((void**)&d_rechits,       rechits.size() * sizeof(EcalUncalibratedRecHit));
-    cudaMalloc((void**)&d_noisecors,     noisecors.size() * sizeof(SampleMatrix));
+//     cudaMalloc((void**)&d_pedestals,     vpedestals.size() * sizeof(EcalPedestal));
+//     cudaMalloc((void**)&d_gains,         vgains.size() * sizeof(EcalMGPAGainRatio));
+//     cudaMalloc((void**)&d_xtals,         vxtals.size() * sizeof(EcalXtalGroupId));
+//     cudaMalloc((void**)&d_shapes,        vpulses.size() * sizeof(EcalPulseShape));
+//     cudaMalloc((void**)&d_covariances,   vcovariances.size() * sizeof(EcalPulseCovariance));
+//     cudaMalloc((void**)&d_rechits,       rechits.size() * sizeof(EcalUncalibratedRecHit));
+//     cudaMalloc((void**)&d_noisecors,     noisecors.size() * sizeof(SampleMatrix));
     
     //---- basic: 
     //  input:
@@ -254,20 +263,20 @@ int main(int argc, char** argv) {
     //
     cudaMemcpy(d_digis_data, digis_data.data(),     digis_data.size() * sizeof(digis_type::value_type),    cudaMemcpyHostToDevice);
     cudaMemcpy(d_ids, ids.data(),                   ids.size() * sizeof(dids_type::value_type),            cudaMemcpyHostToDevice);
-    cudaMemcpy(d_pedestals, vpedestals.data(),      vpedestals.size() * sizeof(EcalPedestal),              cudaMemcpyHostToDevice);
-    cudaMemcpy(d_gains, vgains.data(),              vgains.size() * sizeof(EcalMGPAGainRatio),             cudaMemcpyHostToDevice);
-    cudaMemcpy(d_xtals, vxtals.data(),              vxtals.size() * sizeof(EcalXtalGroupId),               cudaMemcpyHostToDevice);
-    cudaMemcpy(d_shapes, vpulses.data(),            vpulses.size() * sizeof(EcalPulseShape),               cudaMemcpyHostToDevice);
-    cudaMemcpy(d_covariances, vcovariances.data(),  vcovariances.size() * sizeof(EcalPulseCovariance),     cudaMemcpyHostToDevice);
-    cudaMemcpy(d_rechits, &(*rechits.begin()),      rechits.size() * sizeof(EcalUncalibratedRecHit),       cudaMemcpyHostToDevice);
-    cudaMemcpy(d_noisecors, noisecors.data(),       noisecors.size() * sizeof(SampleMatrix),               cudaMemcpyHostToDevice);
+//     cudaMemcpy(d_pedestals, vpedestals.data(),      vpedestals.size() * sizeof(EcalPedestal),              cudaMemcpyHostToDevice);
+//     cudaMemcpy(d_gains, vgains.data(),              vgains.size() * sizeof(EcalMGPAGainRatio),             cudaMemcpyHostToDevice);
+//     cudaMemcpy(d_xtals, vxtals.data(),              vxtals.size() * sizeof(EcalXtalGroupId),               cudaMemcpyHostToDevice);
+//     cudaMemcpy(d_shapes, vpulses.data(),            vpulses.size() * sizeof(EcalPulseShape),               cudaMemcpyHostToDevice);
+//     cudaMemcpy(d_covariances, vcovariances.data(),  vcovariances.size() * sizeof(EcalPulseCovariance),     cudaMemcpyHostToDevice);
+//     cudaMemcpy(d_rechits, &(*rechits.begin()),      rechits.size() * sizeof(EcalUncalibratedRecHit),       cudaMemcpyHostToDevice);
+//     cudaMemcpy(d_noisecors, noisecors.data(),       noisecors.size() * sizeof(SampleMatrix),               cudaMemcpyHostToDevice);
     
     
     std::cout << "now fit" << std::endl;
     int nthreads_per_block = 256;
     int nblocks = (ebDigis->size() + nthreads_per_block - 1) / nthreads_per_block;
 
-    kernel_print<<<nblocks, nthreads_per_block>>>();
+//     kernel_print<<<nblocks, nthreads_per_block>>>();
     
     
 //     kernel_reconstruct<<<nblocks, nthreads_per_block>>>(
@@ -288,22 +297,22 @@ int main(int argc, char** argv) {
       //
     // transfer the results back
     // 
-    cudaMemcpy(&(*rechits.begin()), d_rechits, rechits.size() * sizeof(EcalUncalibratedRecHit), cudaMemcpyDeviceToHost);
+//     cudaMemcpy(&(*rechits.begin()), d_rechits, rechits.size() * sizeof(EcalUncalibratedRecHit), cudaMemcpyDeviceToHost);
     
     // 
     // free all the device ptrs
     // TODO: remove per event dealloc
     //
-    cudaFree(d_digis_data);
-    cudaFree(d_ids);
-    cudaFree(d_pedestals);
-    cudaFree(d_gains);
-    cudaFree(d_xtals);
-    cudaFree(d_shapes);
-    cudaFree(d_covariances);
-    cudaFree(d_rechits);
-    cudaFree(d_noisecors);
-    
+//     cudaFree(d_digis_data);
+//     cudaFree(d_ids);
+//     cudaFree(d_pedestals);
+//     cudaFree(d_gains);
+//     cudaFree(d_xtals);
+//     cudaFree(d_shapes);
+//     cudaFree(d_covariances);
+//     cudaFree(d_rechits);
+//     cudaFree(d_noisecors);
+//     
     
 //     PulseChiSqSNNLS _pulsefunc;
     

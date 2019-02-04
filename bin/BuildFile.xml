@@ -5,7 +5,7 @@
 
 
 
-<bin name="fitrechit" file="fitrechit.cpp">
+<bin name="fitrechit_cpp" file="fitrechit.cpp">
   <use name="FWCore/Framework"/>
   <use name="FWCore/PluginManager"/>
   <use name="FWCore/ParameterSet"/>
@@ -27,5 +27,39 @@
   <use name="cuda"/>
   <flags LCGDICT_ARGS="--deep"/>
   <flags CUDA_FLAGS="-Xptxas -O2,-v"/>
+</bin>
+
+
+
+
+
+<bin name="fitrechit" file="fitrechit.cc fitrechit_kernel.cu ">
+  <use name="FWCore/Framework"/>
+  <use name="FWCore/PluginManager"/>
+  <use name="FWCore/ParameterSet"/>
+  <use name="FWCore/ServiceRegistry"/>
+  <use name="CommonTools/UtilAlgos"/>
+  <use name="DataFormats/PatCandidates"/>
+  <use name="PhysicsTools/PatUtils"/>
+  <use name="Geometry/CaloGeometry"/>
+  <use name="Geometry/CaloTopology"/>
+  <use name="Geometry/EcalAlgo"/>
+  <use name="DataFormats/EgammaCandidates"/>
+  <use name="DataFormats/​EcalDigi"/>
+  <use name="RecoEgamma/EgammaIsolationAlgos"/>
+  <use name="PhysicsTools/RecoAlgos"/>
+  <use name="DataFormats/EcalDetId"/>
+  <use name="RecoEcal/EgammaCoreTools"/>
+  <use name="RecoLocalCalo/EcalRecAlgos"/>
+  <use name="eigen"/>
+  <use name="cuda"/>
+  <flags LCGDICT_ARGS="--deep"/>
+  <flags CUDA_FLAGS="-Xptxas -O2,-v"/>
+</bin>
+
+
+
+<bin name="test_cuda" file="test_cuda.cu">
+  <use name="cuda"/>
 </bin>
 
