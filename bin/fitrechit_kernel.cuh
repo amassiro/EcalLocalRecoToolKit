@@ -11,17 +11,80 @@
 #include <fstream> 
 
 
+
+
+//---- ECAL
+#include "DataFormats/EcalRecHit/interface/EcalUncalibratedRecHit.h"
+#include "DataFormats/EcalDigi/interface/EcalDigiCollections.h"
+// 
+// #include "FWCore/Framework/interface/Event.h"
+// #include "FWCore/Framework/interface/EventSetup.h"
+// 
+#include "DataFormats/EcalDigi/interface/EEDataFrame.h"
+#include "DataFormats/EcalDigi/interface/EBDataFrame.h"
+// 
+// 
+#include "DataFormats/EcalDigi/interface/EcalDigiCollections.h"
+#include "CondFormats/EcalObjects/interface/EcalPedestals.h"
+#include "CondFormats/EcalObjects/interface/EcalMGPAGainRatio.h"
+#include "CondFormats/EcalObjects/interface/EcalXtalGroupId.h"
+#include "CondFormats/EcalObjects/interface/EcalPulseShapes.h"
+#include "CondFormats/EcalObjects/interface/EcalPulseCovariances.h"
+#include "DataFormats/EcalDigi/interface/EcalDataFrame.h"
+// 
+// #include "DataFormats/EcalRecHit/interface/EcalRecHitCollections.h"
+#include "RecoLocalCalo/EcalRecAlgos/interface/EigenMatrixTypes.h"
+// 
+// 
+#include "CondFormats/EcalObjects/interface/EcalGainRatios.h"
+// 
+
+// #include "RecoLocalCalo/EcalRecAlgos/interface/EcalUncalibRecHitMultiFitAlgo_gpu.h"
+// #include "RecoLocalCalo/EcalRecAlgos/interface/EcalUncalibRecHitMultiFitAlgo.h"
+
+
 //---- cuda
 #include <cuda.h>
 // #include <cuda_runtime.h>
 #include <cuda_runtime_api.h>
 #include <assert.h>
 
+
+
 __global__ void kernel_print() ;
 
 void non_kernel_print(int nblocks, int nthreads_per_block) ;
 
 
+__global__  void kernel_reconstruct(
+  uint16_t const *digis,
+  uint32_t const *ids,
+  EcalPedestal const *pedestals,
+  EcalMGPAGainRatio const *gains,
+  EcalXtalGroupId const *xtals,
+  EcalPulseShape const *shapes,
+  EcalPulseCovariance const *covariances,
+  EcalUncalibratedRecHit *rechits,
+  SampleMatrix const *noisecors,
+  unsigned int size);
+
+
+void non_kernel_reconstruct(
+  int nblocks, int nthreads_per_block,
+  uint16_t const *digis,
+  uint32_t const *ids,
+  EcalPedestal const *pedestals,
+  EcalMGPAGainRatio const *gains,
+  EcalXtalGroupId const *xtals,
+  EcalPulseShape const *shapes,
+  EcalPulseCovariance const *covariances,
+  EcalUncalibratedRecHit *rechits,
+  SampleMatrix const *noisecors,
+  unsigned int size);
+
+
+
+  
 // __global__ 
 // void kernel_print() {
 //   printf("Hello!\n");

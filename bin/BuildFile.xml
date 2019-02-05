@@ -60,3 +60,31 @@
   <use name="cuda"/>
 </bin>
 
+
+
+
+<bin name="fitrechit_gpu" file="fitrechit_gpu.cpp fitrechit_kernel.cu">
+  <use name="DataFormats/EcalRecHit"/>
+  <use name="FWCore/Framework"/>
+  <use name="FWCore/PluginManager"/>
+  <use name="FWCore/ParameterSet"/>
+  <use name="FWCore/ServiceRegistry"/>
+  <use name="CommonTools/UtilAlgos"/>
+  <use name="DataFormats/PatCandidates"/>
+  <use name="PhysicsTools/PatUtils"/>
+  <use name="Geometry/CaloGeometry"/>
+  <use name="Geometry/CaloTopology"/>
+  <use name="Geometry/EcalAlgo"/>
+  <use name="DataFormats/EgammaCandidates"/>
+  <use name="DataFormats/​EcalDigi"/>
+  <use name="RecoEgamma/EgammaIsolationAlgos"/>
+  <use name="PhysicsTools/RecoAlgos"/>
+  <use name="DataFormats/EcalDetId"/>
+  <use name="RecoEcal/EgammaCoreTools"/>
+  <use name="RecoLocalCalo/EcalRecAlgos"/>
+  <use name="eigen"/>
+  <use name="cuda"/>
+  <flags LCGDICT_ARGS="--deep"/>
+  <!--   <flags CUDA_FLAGS="-Xptxas -O2,-v"/> -->
+</bin>
+
