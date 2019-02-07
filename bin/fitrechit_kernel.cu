@@ -1,6 +1,9 @@
 #include "fitrechit_kernel.cuh"
 
 
+// #include "RecoLocalCalo/EcalRecAlgos/src/EcalUncalibRecHitMultiFitAlgo_gpu.cu"
+
+
 
 __global__ void 
 kernel_print() {
@@ -134,6 +137,10 @@ __global__  void kernel_reconstruct(
               BXVector activeBX;
               activeBX.resize(10);
               activeBX << -5,-4,-3,-2,-1,0,1,2,3,4;
+              
+//               ecal::multifit::
+//               EcalUncalibRecHitMultiFitAlgo algo{};
+//               
 //               EcalUncalibRecHitMultiFitAlgo algo{};
 //               rechits[idx] = algo.makeRecHit(edf, aped, aGain, 
 //                                              noisecors, fullpulse, fullpulsecov, 
