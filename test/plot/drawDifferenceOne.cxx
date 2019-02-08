@@ -36,6 +36,37 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   
   
   
+  
+  
+  
+  
+  
+  
+  TCanvas* cc_2d_EB = new TCanvas ("cc_2d_EB", "2D EB", 800, 600);
+  plot = Form ("second_%sEB:%sEB >> h_EB(%d,%f,%f,%d,%f,%f)", name.c_str(), name.c_str(), numbin, min, max, numbin, min, max);
+  if (applycut ==1) cut = Form ("%sEB>0", name.c_str());  
+  else if (applycut ==2) cut = Form ("%sEB!=-99", name.c_str());  
+  tree->Draw(plot.Data(), cut.Data(), "goff");
+    
+  h_EB->Draw("colz");
+  
+  
+  
+  TCanvas* cc_2d_EE = new TCanvas ("cc_2d_EE", "2D EE", 800, 600);
+  plot = Form ("second_%sEE:%sEE >> h_EE(%d,%f,%f,%d,%f,%f)", name.c_str(), name.c_str(), numbin, min, max, numbin, min, max);
+  if (applycut ==1) cut = Form ("%sEE>0", name.c_str());  
+  else if (applycut ==2)  cut = Form ("%sEE!=-99", name.c_str()); 
+  tree->Draw(plot.Data(), cut.Data(), "goff");
+  
+  h_EE->Draw("colz");
+  
+  
+  
+  
+  
+  
+  
+  
   TCanvas* cc_single_EB = new TCanvas ("cc_single_EB", "EB", 800, 600);
   plot = Form ("second_%sEB >> h_EB_2(%d,%f,%f)", name.c_str(), numbin, min, max);
   if (applycut ==1) cut = Form ("second_%sEB>0", name.c_str());  
