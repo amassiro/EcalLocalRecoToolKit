@@ -156,6 +156,8 @@ private:
   float _chi2EE[14648];
   float _jitterEB[61200];
   float _jitterEE[14648];
+  float _jitterErrorEB[61200];
+  float _jitterErrorEE[14648];
   float _amplitudeErrorEB[61200];
   float _amplitudeErrorEE[14648];
   float _outOfTimeAmplitudeM1EB[61200];
@@ -187,6 +189,8 @@ private:
   float _second_chi2EE[14648];
   float _second_jitterEB[61200];
   float _second_jitterEE[14648];
+  float _second_jitterErrorEB[61200];
+  float _second_jitterErrorEE[14648];
   float _second_amplitudeErrorEB[61200];
   float _second_amplitudeErrorEE[14648];
   float _second_outOfTimeAmplitudeM1EB[61200];
@@ -250,6 +254,8 @@ TreeComparisonProducer::TreeComparisonProducer(const edm::ParameterSet& iConfig)
   outTree->Branch("chi2EE",       _chi2EE,    "chi2EE[14648]/F");
   outTree->Branch("jitterEB",       _jitterEB,    "jitterEB[61200]/F");
   outTree->Branch("jitterEE",       _jitterEE,    "jitterEE[14648]/F");
+  outTree->Branch("jitterErrorEB",       _jitterErrorEB,    "jitterErrorEB[61200]/F");
+  outTree->Branch("jitterErrorEE",       _jitterErrorEE,    "jitterErrorEE[14648]/F");
   outTree->Branch("amplitudeErrorEB",       _amplitudeErrorEB,    "amplitudeErrorEB[61200]/F");
   outTree->Branch("amplitudeErrorEE",       _amplitudeErrorEE,    "amplitudeErrorEE[14648]/F");
   outTree->Branch("outOfTimeAmplitudeM1EB",       _outOfTimeAmplitudeM1EB,    "outOfTimeAmplitudeM1EB[61200]/F");
@@ -279,6 +285,8 @@ TreeComparisonProducer::TreeComparisonProducer(const edm::ParameterSet& iConfig)
   outTree->Branch("second_chi2EE",       _second_chi2EE,    "second_chi2EE[14648]/F");
   outTree->Branch("second_jitterEB",       _second_jitterEB,    "second_jitterEB[61200]/F");
   outTree->Branch("second_jitterEE",       _second_jitterEE,    "second_jitterEE[14648]/F");
+  outTree->Branch("second_jitterErrorEB",       _second_jitterErrorEB,    "second_jitterErrorEB[61200]/F");
+  outTree->Branch("second_jitterErrorEE",       _second_jitterErrorEE,    "second_jitterErrorEE[14648]/F");
   outTree->Branch("second_amplitudeErrorEB",       _second_amplitudeErrorEB,    "second_amplitudeErrorEB[61200]/F");
   outTree->Branch("second_amplitudeErrorEE",       _second_amplitudeErrorEE,    "second_amplitudeErrorEE[14648]/F");
   outTree->Branch("second_outOfTimeAmplitudeM1EB",       _second_outOfTimeAmplitudeM1EB,    "second_outOfTimeAmplitudeM1EB[61200]/F");
@@ -362,6 +370,7 @@ TreeComparisonProducer::analyze(const edm::Event& iEvent, const edm::EventSetup&
     _onlineEnergyEB[ixtal] = -99;
     _chi2EB[ixtal] = -99;
     _jitterEB[ixtal] = -99;
+    _jitterErrorEB[ixtal] = -99;
     _amplitudeErrorEB[ixtal] = -99;
     _outOfTimeAmplitudeM1EB[ixtal] = -99;
     _outOfTimeAmplitudeM2EB[ixtal] = -99;
@@ -376,6 +385,7 @@ TreeComparisonProducer::analyze(const edm::Event& iEvent, const edm::EventSetup&
     _second_onlineEnergyEB[ixtal] = -99;
     _second_chi2EB[ixtal] = -99;
     _second_jitterEB[ixtal] = -99;
+    _second_jitterErrorEB[ixtal] = -99;
     _second_amplitudeErrorEB[ixtal] = -99;
     _second_outOfTimeAmplitudeM1EB[ixtal] = -99;
     _second_outOfTimeAmplitudeM2EB[ixtal] = -99;
@@ -392,6 +402,7 @@ TreeComparisonProducer::analyze(const edm::Event& iEvent, const edm::EventSetup&
     _onlineEnergyEE[ixtal] = -99;
     _chi2EE[ixtal] = -99;
     _jitterEE[ixtal] = -99;
+    _jitterErrorEE[ixtal] = -99;
     _amplitudeErrorEE[ixtal] = -99;
     _outOfTimeAmplitudeM1EE[ixtal] = -99;
     _outOfTimeAmplitudeM2EE[ixtal] = -99;
@@ -405,7 +416,8 @@ TreeComparisonProducer::analyze(const edm::Event& iEvent, const edm::EventSetup&
     
     _second_onlineEnergyEE[ixtal] = -99;
     _second_chi2EE[ixtal] = -99;
-    _second_jitterEE[ixtal] = -99;
+    _second_jitterEB[ixtal] = -99;
+    _second_jitterErrorEB[ixtal] = -99;
     _second_amplitudeErrorEE[ixtal] = -99;
     _second_outOfTimeAmplitudeM1EE[ixtal] = -99;
     _second_outOfTimeAmplitudeM2EE[ixtal] = -99;
@@ -444,6 +456,7 @@ TreeComparisonProducer::analyze(const edm::Event& iEvent, const edm::EventSetup&
     _onlineEnergyEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitude();    
     _chi2EB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->chi2();    
     _jitterEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->jitter();    
+    _jitterErrorEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->jitterError();    
     _amplitudeErrorEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitudeError();    
     _outOfTimeAmplitudeM1EB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->outOfTimeAmplitude(4);    
     _outOfTimeAmplitudeM2EB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->outOfTimeAmplitude(3);    
@@ -461,6 +474,7 @@ TreeComparisonProducer::analyze(const edm::Event& iEvent, const edm::EventSetup&
     _onlineEnergyEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitude();
     _chi2EE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->chi2();
     _jitterEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->jitter();  
+    _jitterErrorEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->jitterError();  
     _amplitudeErrorEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitudeError();
     _outOfTimeAmplitudeM1EE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->outOfTimeAmplitude(4);
     _outOfTimeAmplitudeM2EE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->outOfTimeAmplitude(3);
@@ -479,6 +493,7 @@ TreeComparisonProducer::analyze(const edm::Event& iEvent, const edm::EventSetup&
     _second_onlineEnergyEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitude();    
     _second_chi2EB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->chi2();    
     _second_jitterEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->jitter();    
+    _second_jitterErrorEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->jitterError();    
     _second_amplitudeErrorEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitudeError();    
     _second_outOfTimeAmplitudeM1EB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->outOfTimeAmplitude(4);    
     _second_outOfTimeAmplitudeM2EB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->outOfTimeAmplitude(3);    
@@ -495,6 +510,7 @@ TreeComparisonProducer::analyze(const edm::Event& iEvent, const edm::EventSetup&
     _second_onlineEnergyEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitude();
     _second_chi2EE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->chi2();
     _second_jitterEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->jitter();
+    _second_jitterErrorEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->jitterError();
     _second_amplitudeErrorEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitudeError();
     _second_outOfTimeAmplitudeM1EE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->outOfTimeAmplitude(4);
     _second_outOfTimeAmplitudeM2EE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->outOfTimeAmplitude(3);
