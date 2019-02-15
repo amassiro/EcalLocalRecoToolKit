@@ -8,6 +8,13 @@ Preparation
     git cms-init
     git checkout -b amassiro-ecal-cuda
 
+    git remote add origin git@github.com:amassiro/cmssw
+    
+    git fetch origin
+    
+    git push -u origin amassiro-ecal-cuda
+    
+    
 Prepare packages that will be changed:
     
     git-cms-addpkg  DataFormats/EcalDetId
@@ -22,3 +29,9 @@ Changes
 ====
 
 
+Test
+====
+
+    cmsRun raw2digi_ecalonly.py inputType=globalRun          year=2017      
+
+    
