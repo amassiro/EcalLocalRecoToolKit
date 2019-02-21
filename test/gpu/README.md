@@ -41,8 +41,14 @@ Test
 Compare two reconstructions:
 ====
 
+    nvidia-smi
+    export CUDA_VISIBLE_DEVICES=1 
 
     cmsRun raw2digi_ecalonly_dumpComparison.py  inputType=globalRun          year=2017        outputFile=dump.root
+    
+    export CUDA_VISIBLE_DEVICES=1; cmsRun raw2digi_ecalonly_dumpComparison.py  inputType=globalRun          year=2017        outputFile=dump.root
+    
+    
     
     r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",200,0,200\)
     
