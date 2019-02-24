@@ -23,6 +23,11 @@ Prepare packages that will be changed:
     git-cms-addpkg  RecoLocalCalo/EcalRecAlgos
     git-cms-addpkg  RecoLocalCalo/EcalRecProducers
 
+
+copy for eigen on gpu
+
+    cp /data/patatrack/vkhriste/cmssw_releases/CMSSW_10_5_X_2019-01-27-2300/config/toolbox/slc7_amd64_gcc700/tools/selected/eigen.xml ../config/toolbox/slc7_amd64_gcc700/tools/selected/
+    
     
     
 Changes
@@ -36,7 +41,10 @@ Test
 
     cmsRun raw2digi_ecalonly_dumpComparison.py inputType=globalRun          year=2017        outputFile=dump.root
     
-    
+
+    export CUDA_VISIBLE_DEVICES=1;    cmsRun raw2digi_ecalonly_gpuonly.py       inputType=globalRun          year=2017    
+    cmsRun raw2digi_ecalonly_cpuonly.py       inputType=globalRun          year=2017    
+                                                   
     
 Compare two reconstructions:
 ====
@@ -47,6 +55,8 @@ Compare two reconstructions:
     cmsRun raw2digi_ecalonly_dumpComparison.py  inputType=globalRun          year=2017        outputFile=dump.root
     
     export CUDA_VISIBLE_DEVICES=1; cmsRun raw2digi_ecalonly_dumpComparison.py  inputType=globalRun          year=2017        outputFile=dump.root
+    
+    
     
     
     
