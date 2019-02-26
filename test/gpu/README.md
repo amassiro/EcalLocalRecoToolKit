@@ -46,6 +46,14 @@ Test
     cmsRun raw2digi_ecalonly_cpuonly.py       inputType=globalRun          year=2017    
                                                    
     
+    TimeReport   0.127262     0.127262     0.127262  ecalMultiFitUncalibRecHit
+    TimeReport   0.333088     0.333088     0.333088  ecalMultiFitUncalibRecHitGpu
+      
+
+    TimeReport   0.121214     0.121214     0.121214  ecalMultiFitUncalibRecHit
+    TimeReport   0.331326     0.331326     0.331326  ecalMultiFitUncalibRecHitGpu
+    
+    
 Compare two reconstructions:
 ====
 
