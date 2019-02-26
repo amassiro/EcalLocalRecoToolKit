@@ -62,19 +62,47 @@ Compare two reconstructions:
     
     r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",200,0,200\)
     
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"chi2\",200,0,10\)
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM1\",200,0,200\)
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM2\",200,0,200\)
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM3\",200,0,200\)
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM4\",200,0,200\)
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM5\",200,0,200\)
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP1\",200,0,200\)    
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP2\",200,0,200\)
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP3\",200,0,200\)
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP4\",200,0,200\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"chi2\",200,0,10\)
+    
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",100,0,100\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",100,0,20\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",100,0,50\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",1000,-100,100,0\)
     
     
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"jitter\",400,-200,200,0\)
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"jitter\",400,-200,200,2\)
+    
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM1\",200,0,200\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM2\",200,0,200\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM3\",200,0,200\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM4\",200,0,200\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM5\",200,0,200\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP1\",200,0,200\)    
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP2\",200,0,200\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP3\",200,0,200\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP4\",200,0,200\)
 
-    r99t dump.root    plot/drawDifferenceOne.cxx\(\"jitterError\",400,-2,2,2\)
+    
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM1\",200,0,20,0\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM2\",200,0,20,0\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM3\",200,0,20,0\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM4\",200,0,20,0\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM5\",200,0,20,0\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP1\",200,0,20,0\)    
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP2\",200,0,20,0\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP3\",200,0,20,0\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP4\",200,0,20,0\)
+
+    
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"jitter\",400,-200,200,0\)
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"jitter\",400,-200,200,2\)
+
+    r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"jitterError\",400,-2,2,2\)
+
+    
+    
+    
+    
+    
+    
+    
+    

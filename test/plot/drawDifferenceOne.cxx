@@ -75,6 +75,7 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   h_EB_2->SetLineColor(kBlack);
   h_EB_2->Draw();
   
+  
   plot = Form ("%sEB >> h_EB_1(%d,%f,%f)", name.c_str(), numbin, min, max);
   if (applycut ==1) cut = Form ("%sEB>0", name.c_str());  
   else if (applycut ==2) cut = Form ("%sEB!=-99", name.c_str());  
@@ -83,6 +84,11 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   h_EB_1->SetLineStyle(2);
   h_EB_1->Draw("same");
   
+  TLegend* leg = new TLegend ( 0.70, 0.70, 0.90, 0.90 );
+  leg->AddEntry("h_EB_1","cpu","l");
+  leg->AddEntry("h_EB_2","gpu","l");
+  leg->Draw();
+
   cc_single_EB->SetLogy();
 
 
@@ -103,6 +109,8 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   h_EE_1->SetLineColor(kRed);
   h_EE_1->SetLineStyle(2);
   h_EE_1->Draw("same");
+  
+  leg->Draw();
   
   cc_single_EE->SetLogy();
   
