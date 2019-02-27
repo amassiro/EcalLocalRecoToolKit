@@ -16,20 +16,20 @@ infile    = ""
 
 options = VarParsing.VarParsing('analysis')
 options.register('inputType',
-                 'localRun',
+                 'globalRun',
                  VarParsing.VarParsing.multiplicity.singleton,
                  VarParsing.VarParsing.varType.string,
                  "input type")
 
 options.register('year',
-                 2018,
+                 2017,
                  VarParsing.VarParsing.multiplicity.singleton,
                  VarParsing.VarParsing.varType.int,
                  "year")
 
 options.parseArguments()
 
-print "YEAR = ", options.year, " TYPE = ", options.inputType
+#print "YEAR = ", options.year, " TYPE = ", options.inputType
 
 
 if options.year == 2017:

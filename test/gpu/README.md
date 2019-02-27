@@ -107,10 +107,80 @@ Compare two reconstructions:
     r99t dump.root    ../plot/drawDifferenceOne.cxx\(\"jitterError\",400,-2,2,2\)
 
     
+
     
     
+        
+Measure time and throughput
+====
     
     
+Prepare the cmsrun file to be run
+
+    export CUDA_VISIBLE_DEVICES=1;    cmsRun raw2digi_ecalonly_gpuonly.py       inputType=globalRun          year=2017    
+    cmsRun raw2digi_ecalonly_cpuonly.py       inputType=globalRun          year=2017    
+    
+    edmConfigDump raw2digi_ecalonly_gpuonly.py > dump_ecal_gpu.py
+    edmConfigDump raw2digi_ecalonly_cpuonly.py > dump_ecal_cpu.py
+
+     
+Download toolkit and run:
+
+    git clone git@github.com:cms-patatrack/patatrack-scripts.git
+    
+    https://github.com/cms-patatrack/patatrack-scripts/
+
+
+    nvprof cmsRun ECALValidation/EcalLocalRecoToolKit/test/gpu/dump_ecal_cpu.py  
+         ---> cpu, nothing
+    nvprof cmsRun ECALValidation/EcalLocalRecoToolKit/test/gpu/dump_ecal_gpu.py
+
     
     
+Results:
+
+    https://developer.nvidia.com/nvidia-visual-profiler
     
+    ==26222== Profiling application: cmsRun ECALValidation/EcalLocalRecoToolKit/test/gpu/dump_ecal_gpu.py
+    ==26222== Profiling result:
+                Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+     GPU activities:   99.78%  3.16778s        20  158.39ms  5.8279ms  1.53477s  kernel_reconstruct(float*, float*, float*, float*, float*, float*)
+                        0.16%  5.0808ms        40  127.02us  19.616us  913.79us  [CUDA memcpy DtoH]
+                        0.06%  1.8501ms       100  18.500us  1.0240us  105.28us  [CUDA memcpy HtoD]
+          API calls:   85.10%  3.16813s        20  158.41ms  5.8317ms  1.53482s  cudaDeviceSynchronize
+                       14.28%  531.47ms        27  19.684ms     469ns  524.42ms  cudaFree
+                        0.32%  11.957ms       140  85.407us  8.0230us  1.1766ms  cudaMemcpy
+                        0.15%  5.5429ms        20  277.15us  14.708us  5.1339ms  cudaLaunchKernel
+                        0.08%  3.0042ms         9  333.80us  296.47us  383.73us  cudaMalloc
+                        0.05%  1.9465ms        96  20.276us     263ns  898.34us  cuDeviceGetAttribute
+                        0.01%  363.91us         1  363.91us  363.91us  363.91us  cuDeviceTotalMem
+                        0.01%  215.13us         1  215.13us  215.13us  215.13us  cuDeviceGetName
+                        0.00%  25.446us         1  25.446us  25.446us  25.446us  cuDeviceGetPCIBusId
+                        0.00%  2.5230us         3     841ns     398ns  1.6330us  cuDeviceGetCount
+                        0.00%  1.9340us         2     967ns     310ns  1.6240us  cuDeviceGet
+                        0.00%     537ns         1     537ns     537ns     537ns  cuDeviceGetUuid
+
+    
+Other:
+    
+    ./patatrack-scripts/benchmark ECALValidation/EcalLocalRecoToolKit/test/gpu/dump_ecal_cpu.py 
+    ./patatrack-scripts/benchmark ECALValidation/EcalLocalRecoToolKit/test/gpu/dump_ecal_gpu.py 
+
+    
+    CPU
+ 
+            2 CPUs:
+              0: Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz (12 cores, 24 threads)
+              1: Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz (12 cores, 24 threads)
+            
+            1 visible NVIDIA GPUs:
+              1: GeForce GTX 1080 Ti (UUID: GPU-6bdeda7f-79bd-709f-4635-2e8f4e32f671)
+            
+            Warming up
+            
+            
+            Running 4 times over 4200 events with 1 jobs, each with 8 threads, 8 streams and 1 GPUs
+ 
+ 
+ 
+     
