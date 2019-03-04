@@ -150,8 +150,8 @@ private:
   UShort_t _event;      
   float _onlineEnergyEB[61200];
   float _onlineEnergyEE[14648];
-  int _size_EB;      
-  int _size_EE;      
+  int _sizeEB;      
+  int _sizeEE;      
   float _chi2EB[61200];
   float _chi2EE[14648];
   float _jitterEB[61200];
@@ -183,8 +183,8 @@ private:
   
   float _second_onlineEnergyEB[61200];
   float _second_onlineEnergyEE[14648];
-  int _second_size_EB;      
-  int _second_size_EE;      
+  int _second_sizeEB;      
+  int _second_sizeEE;      
   float _second_chi2EB[61200];
   float _second_chi2EE[14648];
   float _second_jitterEB[61200];
@@ -276,8 +276,8 @@ TreeComparisonProducer::TreeComparisonProducer(const edm::ParameterSet& iConfig)
   outTree->Branch("outOfTimeAmplitudeP4EE",       _outOfTimeAmplitudeP4EE,    "outOfTimeAmplitudeP4EE[14648]/F");
   outTree->Branch("outOfTimeAmplitudeM5EB",       _outOfTimeAmplitudeM5EB,    "outOfTimeAmplitudeM5EB[61200]/F");
   outTree->Branch("outOfTimeAmplitudeM5EE",       _outOfTimeAmplitudeM5EE,    "outOfTimeAmplitudeM5EE[14648]/F");
-  outTree->Branch("size_EB",             &_size_EB,           "size_EB/I");
-  outTree->Branch("size_EE",             &_size_EE,           "size_EE/I");
+  outTree->Branch("sizeEB",             &_sizeEB,           "sizeEB/I");
+  outTree->Branch("sizeEE",             &_sizeEE,           "sizeEE/I");
  
   outTree->Branch("second_onlineEnergyEB",       _second_onlineEnergyEB,    "second_onlineEnergyEB[61200]/F");
   outTree->Branch("second_onlineEnergyEE",       _second_onlineEnergyEE,    "second_onlineEnergyEE[14648]/F");
@@ -307,8 +307,8 @@ TreeComparisonProducer::TreeComparisonProducer(const edm::ParameterSet& iConfig)
   outTree->Branch("second_outOfTimeAmplitudeP4EE",       _second_outOfTimeAmplitudeP4EE,    "second_outOfTimeAmplitudeP4EE[14648]/F");
   outTree->Branch("second_outOfTimeAmplitudeM5EB",       _second_outOfTimeAmplitudeM5EB,    "second_outOfTimeAmplitudeM5EB[61200]/F");
   outTree->Branch("second_outOfTimeAmplitudeM5EE",       _second_outOfTimeAmplitudeM5EE,    "second_outOfTimeAmplitudeM5EE[14648]/F");
-  outTree->Branch("second_size_EB",             &_second_size_EB,           "second_size_EB/I");
-  outTree->Branch("second_size_EE",             &_second_size_EE,           "second_size_EE/I");
+  outTree->Branch("second_sizeEB",             &_second_sizeEB,           "second_sizeEB/I");
+  outTree->Branch("second_sizeEE",             &_second_sizeEE,           "second_sizeEE/I");
   
 }
 
@@ -445,11 +445,11 @@ TreeComparisonProducer::analyze(const edm::Event& iEvent, const edm::EventSetup&
   iSetup.get<IdealGeometryRecord>().get(eTTmap);
   
   
-  _size_EB = ebrechits->size();
-  _size_EE = eerechits->size();
+  _sizeEB = ebrechits->size();
+  _sizeEE = eerechits->size();
 
-  _second_size_EB = second_ebrechits->size();
-  _second_size_EE = second_eerechits->size();
+  _second_sizeEB = second_ebrechits->size();
+  _second_sizeEE = second_eerechits->size();
   
   
   for (EcalUncalibratedRecHitCollection::const_iterator itrechit = ebrechits->begin(); itrechit != ebrechits->end(); itrechit++ ) {
