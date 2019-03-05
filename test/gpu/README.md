@@ -189,13 +189,31 @@ Other:
 Dump only, without digi2reco, and compare
 ====
      
+
+Needed for dumping:
+
+     cmsrel CMSSW_10_5_0_pre2
+     cd CMSSW_10_5_0_pre2
+     cd src/
+     cmsenv
+     git cms-init
+     git checkout -b  ecal_cpu_gpu_comp
+     git cms-merge-topic vkhristenko:ecal_cpu_gpu_comp
+
+and now also to run rereco
+
+     git cms-merge-topic vkhristenko:dev
+
+
+Run dump:
+     
     cmsRun dump_ecalonly_dumpComparison.py
     
     Input:  /data/patatrack/vkhriste/data/ecal/result_2018.root
     
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"size\",200,0,10000\)
     
-    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",200,0,200\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",200,0,200,0\)
     
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"chi2\",200,0,10\)
     
@@ -233,9 +251,13 @@ Dump only, without digi2reco, and compare
 
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitterError\",400,-2,2,2\)
 
+
+Run alco Reco:
+
+    export CUDA_VISIBLE_DEVICES=1;    cmsRun raw2digi_newFormat_ecalonly_dumpComparison.py       inputType=globalRun          year=2017    
     
     
     
     
-     
+    
      
