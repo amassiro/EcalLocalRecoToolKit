@@ -215,7 +215,7 @@ Run dump:
     
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",200,0,200,0\)
     
-    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"chi2\",200,0,10\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"chi2\",200,0,10,0\)
     
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",100,0,100\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",100,0,20\)
