@@ -5,7 +5,8 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   TTree* tree = (TTree*) _file0->Get("TreeComparisonProducer/tree");
   float integral = 1.;
   TString plot;
-  TString cut = Form ("1");;
+  TString cut = Form ("1");
+//   cut = Form ("chi2EB==second_chi2EB");
   
   TCanvas* cc_ratio_EB = new TCanvas ("cc_ratio_EB", "Ratio EB", 800, 600);
   plot = Form ("second_%sEB/%sEB >> h_EB(1000,-0.2,2.2)", name.c_str(), name.c_str());
@@ -20,6 +21,8 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   cc_ratio_EB->SetLogy();
   
 
+//   cut = Form ("chi2EE==second_chi2EE");
+  
   TCanvas* cc_ratio_EE = new TCanvas ("cc_ratio_EE", "Ratio EE", 800, 600);
   plot = Form ("second_%sEE/%sEE >> h_EE(1000,-0.2,2.2)", name.c_str(), name.c_str());
   if (applycut ==1) cut = Form ("%sEE>0", name.c_str());  
@@ -41,6 +44,7 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   
   
   
+//   cut = Form ("chi2EB==second_chi2EB");
   
   TCanvas* cc_2d_EB = new TCanvas ("cc_2d_EB", "2D EB", 800, 600);
   plot = Form ("second_%sEB:%sEB >> h_EB_2D(%d,%f,%f,%d,%f,%f)", name.c_str(), name.c_str(), numbin, min, max, numbin, min, max);
@@ -53,6 +57,7 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   h_EB_2D->Draw("colz");
   
   
+//   cut = Form ("chi2EE==second_chi2EE");
   
   TCanvas* cc_2d_EE = new TCanvas ("cc_2d_EE", "2D EE", 800, 600);
   plot = Form ("second_%sEE:%sEE >> h_EE_2D(%d,%f,%f,%d,%f,%f)", name.c_str(), name.c_str(), numbin, min, max, numbin, min, max);
@@ -69,6 +74,7 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   
   
   
+//   cut = Form ("chi2EB==second_chi2EB");
   
   
   TCanvas* cc_single_EB = new TCanvas ("cc_single_EB", "EB", 800, 600);
@@ -97,6 +103,7 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
 
 
   
+//   cut = Form ("chi2EE==second_chi2EE");
   
   TCanvas* cc_single_EE = new TCanvas ("cc_single_EE", "EE", 800, 600);
   plot = Form ("second_%sEE >> h_EE_2(%d,%f,%f)", name.c_str(), numbin, min, max);

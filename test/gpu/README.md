@@ -252,7 +252,7 @@ Run dump:
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitterError\",400,-2,2,2\)
 
 
-Run alco Reco:
+Run also Reco:
 
     export CUDA_VISIBLE_DEVICES=1;    cmsRun raw2digi_newFormat_ecalonly_dumpComparison.py       inputType=globalRun          year=2017    
     
