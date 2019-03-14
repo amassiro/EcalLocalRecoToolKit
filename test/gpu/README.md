@@ -256,6 +256,8 @@ Run also Reco:
 
     export CUDA_VISIBLE_DEVICES=1;    cmsRun raw2digi_newFormat_ecalonly_dumpComparison.py       inputType=globalRun          year=2017    
     
+    export CUDA_VISIBLE_DEVICES=1;    cmsRun raw2digi_newFormat_gpu_ecalonly.py       inputType=globalRun          year=2017    
+    cmsRun raw2digi_newFormat_cpu_ecalonly.py       inputType=globalRun          year=2017    
     
     
     

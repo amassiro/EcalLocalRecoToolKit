@@ -152,12 +152,8 @@ process.load("EventFilter.HcalRawToDigi.HcalRawToDigi_cfi")
 process.load("EventFilter.EcalRawToDigi.EcalUnpackerData_cfi")
 process.load("RecoLuminosity.LumiProducer.bunchSpacingProducer_cfi")
 
-# load both cpu and gpu plugins
+# load gpu plugins
 process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_gpu_new_cfi")
-process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_cfi")
-
-
-process.ecalMultiFitUncalibRecHit.algoPSet.ampErrorCalculation = cms.bool(False)
       
       
       
@@ -176,46 +172,12 @@ process.bunchSpacing = cms.Path(
 )
 
 process.digiPath = cms.Path(
-    #process.hcalDigis
     process.ecalDigis
 )
 
 process.recoPath = cms.Path(
-#    process.horeco
-#    *process.hfprereco
-#    *process.hfreco
-#    *process.hbheprereco
-    process.ecalMultiFitUncalibRecHit
-    *process.ecalMultiFitUncalibRecHitgpu
-#    *process.ecalRecHit
-#    *process.hbheprerecogpu
+    process.ecalMultiFitUncalibRecHitgpu
 )
-
-
-
-
-# ----------------------------------
-# ---- run the dumper for ECAL
-# ----------------------------------
-
-
-process.TFileService = cms.Service("TFileService",
-     fileName = cms.string(options.outputFile)
-)
-
-#
-# NB: new ECAL uncalibrated rechit format!
-#
-
-process.TreeComparisonProducer = cms.EDAnalyzer('TreeComparisonProducerNewDataFormat',
-                           EcalUncalibRecHitsEBCollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEB"),
-                           EcalUncalibRecHitsEECollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEE"),
-
-                           SecondEcalUncalibRecHitsEBCollection = cms.InputTag("ecalMultiFitUncalibRecHitgpu","EcalUncalibRecHitsEBgpunew"),
-                           SecondEcalUncalibRecHitsEECollection = cms.InputTag("ecalMultiFitUncalibRecHitgpu","EcalUncalibRecHitsEEgpunew"),
-                           )
-
-process.TreeComparisonProducer_step = cms.Path(process.TreeComparisonProducer)
 
 
 
@@ -225,8 +187,6 @@ process.schedule = cms.Schedule(
     process.bunchSpacing,
     process.digiPath,
     process.recoPath,
-#    process.ecalecalLocalRecoSequence,
-    process.TreeComparisonProducer_step,
     process.finalize
 )
 
