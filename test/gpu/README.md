@@ -210,6 +210,8 @@ Run dump:
     cmsRun dump_ecalonly_dumpComparison.py
     
     Input:  /data/patatrack/vkhriste/data/ecal/result_2018.root
+            /data/patatrack/vkhriste/cmssw_releases/ecal/CMSSW_10_5_X_2019-03-22-1100/src/test.root
+            
     
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"size\",200,0,10000\)
     
