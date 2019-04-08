@@ -517,12 +517,14 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
   for (int irechit = 0; irechit < _second_sizeEB; irechit++ ) {
     _second_onlineEnergyEB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitude[irechit];    
     _second_jitterEB      [EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->jitter[irechit];    
+    _second_jitterErrorEB [EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->jitterError[irechit];    
     _second_chi2EB        [EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->chi2[irechit];        
   }
   
   for (int irechit = 0; irechit < _second_sizeEE; irechit++ ) {
     _second_onlineEnergyEE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitude[irechit];    
     _second_jitterEE      [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->jitter[irechit];    
+    _second_jitterErrorEE [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->jitterError[irechit];    
     _second_chi2EE        [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->chi2[irechit];        
   }
   
