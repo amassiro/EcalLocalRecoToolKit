@@ -256,6 +256,8 @@ Run dump:
 
 Run also Reco:
 
+    nvidia-smi
+    
     export CUDA_VISIBLE_DEVICES=1;    cmsRun raw2digi_newFormat_ecalonly_dumpComparison.py       inputType=globalRun          year=2017    
     
     export CUDA_VISIBLE_DEVICES=1;    cmsRun raw2digi_newFormat_gpu_ecalonly.py       inputType=globalRun          year=2017    
@@ -263,5 +265,10 @@ Run also Reco:
     
     
     
-    
+Newest branch:
+
+    git cms-merge-topic vkhristenko:ecal_cuda_refactored
+
+ 
+ 
      
