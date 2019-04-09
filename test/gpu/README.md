@@ -250,8 +250,10 @@ Run dump:
     
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitter\",400,-200,200,0\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitter\",400,-200,200,2\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitter\",400,-10,10,2\)
 
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitterError\",400,-2,2,2\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitterError\",400,-0.001,0.5,2\)
 
 
 Run also Reco:
@@ -271,4 +273,31 @@ Newest branch:
 
  
  
+     
+     
+      
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
      

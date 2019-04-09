@@ -17,7 +17,8 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   
   h_EB->SetLineColor(kBlack);
   integral = h_EB->Integral();  h_EB->Scale (1. / integral );
-  
+ 
+  h_EB->GetXaxis()->SetTitle((name + " ratio").c_str());
   h_EB->Draw();
   cc_ratio_EB->SetLogy();
   
@@ -34,6 +35,7 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   h_EE->SetLineColor(kBlack);
   integral = h_EE->Integral();  h_EE->Scale (1. / integral );
   
+  h_EE->GetXaxis()->SetTitle((name + " ratio").c_str());
   h_EE->Draw();
   cc_ratio_EE->SetLogy();
   
@@ -88,6 +90,7 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   else if (applycut ==2) cut = Form ("second_%sEB!=-99", name.c_str());  
   tree->Draw(plot.Data(), cut.Data(), "goff");
   h_EB_2->SetLineColor(kBlack);
+  h_EB_2->GetXaxis()->SetTitle(name.c_str());
   h_EB_2->Draw();
   
   
@@ -98,6 +101,7 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   tree->Draw(plot.Data(), cut.Data(), "goff");
   h_EB_1->SetLineColor(kRed);
   h_EB_1->SetLineStyle(2);
+  h_EB_1->GetXaxis()->SetTitle(name.c_str());
   h_EB_1->Draw("same");
   
   TLegend* leg = new TLegend ( 0.70, 0.70, 0.90, 0.90 );
@@ -118,6 +122,7 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   else if (applycut ==2)  cut = Form ("second_%sEE!=-99", name.c_str());  
   tree->Draw(plot.Data(), cut.Data(), "goff");
   h_EE_2->SetLineColor(kBlack);
+  h_EE_2->GetXaxis()->SetTitle(name.c_str());
   h_EE_2->Draw();
   
   TH1F* h_EE_1 = new TH1F("h_EE_1", "",  numbin, min, max);
@@ -127,6 +132,7 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   tree->Draw(plot.Data(), cut.Data(), "goff");
   h_EE_1->SetLineColor(kRed);
   h_EE_1->SetLineStyle(2);
+  h_EE_1->GetXaxis()->SetTitle(name.c_str());
   h_EE_1->Draw("same");
   
   leg->Draw();
