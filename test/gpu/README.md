@@ -334,7 +334,9 @@ Test performance:
     
     
     ./scan ../Performance/ecalOnly.py
- 
+
+    ./scan ../Performance/ecalOnly_cpu.py
+
     
     
 Idea:
