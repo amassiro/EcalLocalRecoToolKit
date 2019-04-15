@@ -271,15 +271,39 @@ Newest branch:
 
     git cms-merge-topic vkhristenko:ecal_cuda_refactored
 
+
+ssh on cmsgpu machine:
+
     cmgGpu
  
      
      
-      
+Use CMSSW Patatrack
+
+    from cmggpu machine
+    
+    source  /data/patatrack/cmssw/cmsset_default.sh
+     
+    scram list CMSSW --> see which releases are available
+    
+    cmsrel CMSSW_10_5_0_pre2
+    
+    git cms-merge-topic vkhristenko:ecal_cuda_refactored
+    
+    --> the branch from https://github.com/cms-patatrack/cmssw/pull/313
+    
+    scramv1 b -j 20
+    
+    
+    
      
      
      
-     
+Idea:
+
+    - if things changed once per IOV -> don't do it for every event!
+    
+    
      
      
      
