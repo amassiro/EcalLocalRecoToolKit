@@ -296,6 +296,11 @@ Use CMSSW Patatrack
 
     
     
+    cmsrel CMSSW_10_5_0_pre2_Patatrack_CUDA_10_0
+    ----> if not 10_0 then I get: CUDA driver version is insufficient for CUDA runtime version
+    
+    
+    
     git cms-merge-topic vkhristenko:ecal_cuda_refactored
     --> the branch from https://github.com/cms-patatrack/cmssw/pull/313
     
@@ -318,11 +323,20 @@ Test performance:
     
     export CUDA_VISIBLE_DEVICES=1;
     
+    cmsRun  ../Performance/ecalOnly.py
+    
     ./benchmark ../Performance/ecalOnly.py
 
+    208.8 ±   1.7 ev/s
     
-     
-     
+    -> last time it was 2!!
+    
+    
+    
+    ./scan ../Performance/ecalOnly.py
+ 
+    
+    
 Idea:
 
     - if things changed once per IOV -> don't do it for every event!
