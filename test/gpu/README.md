@@ -288,15 +288,39 @@ Use CMSSW Patatrack
     
     cmsrel CMSSW_10_5_0_pre2
     
-    git cms-merge-topic vkhristenko:ecal_cuda_refactored
+    cmsrel CMSSW_10_5_0_pre2_Patatrack
+    cd    CMSSW_10_5_0_pre2_Patatrack/src/
+    cmsenv
+
+    git cms-init -x cms-patatrack
+
     
+    
+    git cms-merge-topic vkhristenko:ecal_cuda_refactored
     --> the branch from https://github.com/cms-patatrack/cmssw/pull/313
     
     scramv1 b -j 20
     
     
     
-     
+Test performance:
+
+    git clone git@github.com:cms-patatrack/patatrack-scripts.git
+
+    /data/patatrack/fwyzard/ecal/
+    
+    use ./benchmark config.py to run a single set of measurements
+    use ./scan config.py to scan over the number of threads
+    
+    
+    
+    nvidia-smi
+    
+    export CUDA_VISIBLE_DEVICES=1;
+    
+    ./benchmark ../Performance/ecalOnly.py
+
+    
      
      
 Idea:
