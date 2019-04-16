@@ -356,7 +356,43 @@ Idea:
     
      
      
-     
+NSight
+
+    optimize single kernel
+    
+    /usr/local/cuda-10.0/NsightCompute-1.0/nv-nsight-cu-cli     
+    
+    CUDA_VISIBLE_DEVICES=0   \
+              /usr/local/cuda-10.0/NsightCompute-1.0/nv-nsight-cu-cli \
+              -o myprof    \
+              /data/patatrack/cmssw/slc7_amd64_gcc700/cms/cmssw/CMSSW_10_5_0_pre2_Patatrack_CUDA_10_0/bin/slc7_amd64_gcc700/cmsRun ecalOnly.py                 
+    
+    cli ----> command line
+    
+    
+    
+    /usr/local/cuda-10.0/NsightCompute-1.0/nv-nsight-cu  /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/onGPU/15Apr2019/CMSSW_10_5_0_pre2_Patatrack_CUDA_10_0/src/Performance/myprof.nsight-cuprof-report
+    
+    
+    
+Nvprof
+
+    nvprof   cmsRun ecalOnly.py
+    
+    
+    
+    
+    
+    
+New producer:
+
+    /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/onGPU/15Apr2019/NewProducer/CMSSW_10_6_0_pre2_Patatrack/src
+    
+    git cms-init -x cms-patatrack
+
+    git cms-merge-topic vkhristenko:ecal_dev_patatrack
+
+    /data/patatrack/vkhriste/cmssw_configs/raw2digi_ecalonly_patatrack.py
      
      
 
@@ -365,6 +401,11 @@ Idea:
      
      
      
+     
+     
+    /data/patatrack/vkhriste/cmssw_releases/ecal/CMSSW_10_6_0_pre2_Patatrack/src/test.root
+     
+    cmsRun dump_ecalonly_dumpComparison.py
      
      
      

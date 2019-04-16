@@ -32,7 +32,8 @@ options.parseArguments()
 GT = '100X_dataRun2_Prompt_v1'
 #infile = ["file:/data/patatrack/vkhriste/data/ecal/result_2018.root"]
 #infile = ["file:/data/patatrack/vkhriste/cmssw_releases/CMSSW_10_5_0_pre2/src/test.root"]
-infile = ["file:/data/patatrack/vkhriste/cmssw_releases/ecal/CMSSW_10_5_X_2019-03-22-1100/src/test.root"]
+#infile = ["file:/data/patatrack/vkhriste/cmssw_releases/ecal/CMSSW_10_5_X_2019-03-22-1100/src/test.root"]
+infile = ["file:/data/patatrack/vkhriste/cmssw_releases/ecal/CMSSW_10_6_0_pre2_Patatrack/src/test.root"]
       
        
 
