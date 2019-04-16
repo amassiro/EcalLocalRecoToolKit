@@ -343,10 +343,8 @@ Test performance:
     
     
     
-    1) rerun gpu with the HLT configuration for GPU too!
-    2) Compare cpu/gpu for consistency 100% same results on 2018 data
-    
-    
+    ok: 1) rerun gpu with the HLT configuration for GPU too!
+    ok: 2) Compare cpu/gpu for consistency 100% same results on 2018 data
     
     
     
