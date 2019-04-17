@@ -394,20 +394,25 @@ New producer:
 
     /data/patatrack/vkhriste/cmssw_configs/raw2digi_ecalonly_patatrack.py
      
-     
+    ./scan ../Performance/raw2digi_ecalonly_patatrack.py
+
+    ./scan ../Performance/ecalOnly_newProducer.py
 
      
      
      
      
      
-     
+    /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/onGPU/15Apr2019/NewProducer/CMSSW_10_6_0_pre2_Patatrack/src/ECALValidation/EcalLocalRecoToolKit/test/gpu
      
     /data/patatrack/vkhriste/cmssw_releases/ecal/CMSSW_10_6_0_pre2_Patatrack/src/test.root
      
     cmsRun dump_ecalonly_dumpComparison.py
      
-     
+    
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"size\",200,0,10000\)
+    
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",200,0,200,0\)
      
      
      
