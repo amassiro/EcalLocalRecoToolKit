@@ -120,8 +120,8 @@ process.TreeComparisonProducer = cms.EDAnalyzer('TreeComparisonProducerNewDataFo
                            EcalUncalibRecHitsEBCollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEB"),
                            EcalUncalibRecHitsEECollection = cms.InputTag("ecalMultiFitUncalibRecHit","EcalUncalibRecHitsEE"),
 
-                           SecondEcalUncalibRecHitsEBCollection = cms.InputTag("ecalMultiFitUncalibRecHitgpu","EcalUncalibRecHitsEBgpunew"),
-                           SecondEcalUncalibRecHitsEECollection = cms.InputTag("ecalMultiFitUncalibRecHitgpu","EcalUncalibRecHitsEEgpunew"),
+                           SecondEcalUncalibRecHitsEBCollection = cms.InputTag("ecalUncalibRecHitProducerGPU","EcalUncalibRecHitsEB"),
+                           SecondEcalUncalibRecHitsEECollection = cms.InputTag("ecalUncalibRecHitProducerGPU","EcalUncalibRecHitsEE"),
                            )
 
 process.TreeComparisonProducer_step = cms.Path(process.TreeComparisonProducer)
