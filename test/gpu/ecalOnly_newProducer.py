@@ -48,6 +48,7 @@ process.load("RecoLuminosity.LumiProducer.bunchSpacingProducer_cfi")
 #process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_cfi")
 process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_gpu_new_cfi")
 process.load("RecoLocalCalo.EcalRecProducers.ecalUncalibRecHitProducerGPU_cfi")
+#process.load("RecoLocalCalo.EcalRecProducers.ecalUncalibRecHitProducerGPUcfi")
 
 
 process.load("RecoLocalCalo.EcalRecProducers.ecalPedestalsGPUESProducer_cfi")
@@ -59,50 +60,11 @@ process.load("RecoLocalCalo.EcalRecProducers.ecalTimeBiasCorrectionsGPUESProduce
 process.load("RecoLocalCalo.EcalRecProducers.ecalTimeCalibConstantsGPUESProducer_cfi")
 
 
-#process.ecalUncalibRecHitProducerGPU.algoPSet.threads = cms.vint32(256, 1, 1)
-
-
-##
-## force HLT configuration for ecalMultiFitUncalibRecHit
-##
-
-#process.ecalUncalibRecHitProducerGPU.algoPSet.outOfTimeThresholdGain61pEB = cms.double( 5.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.outOfTimeThresholdGain61pEB = cms.double( 5.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EBtimeFitParameters = cms.vdouble( -2.015452, 3.130702, -12.3473, 41.88921, -82.83944, 91.01147, -50.35761, 11.05621 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.activeBXs = cms.vint32( -5, -4, -3, -2, -1, 0, 1, 2 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.amplitudeThresholdEE = cms.double( 10.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EBtimeConstantTerm = cms.double( 0.6 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EEtimeFitLimits_Lower = cms.double( 0.2 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.outOfTimeThresholdGain61pEE = cms.double( 1000.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.ebSpikeThreshold = cms.double( 1.042 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EBtimeNconst = cms.double( 28.5 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.ampErrorCalculation = cms.bool( False )   # Important!
-#process.ecalUncalibRecHitProducerGPU.algoPSet.kPoorRecoFlagEB = cms.bool( True )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EBtimeFitLimits_Lower = cms.double( 0.2 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.kPoorRecoFlagEE = cms.bool( False )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.chi2ThreshEB_ = cms.double( 65.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EEtimeFitParameters = cms.vdouble( -2.390548, 3.553628, -17.62341, 67.67538, -133.213, 140.7432, -75.41106, 16.20277 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.useLumiInfoRunHeader = cms.bool( False )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.outOfTimeThresholdGain12mEE = cms.double( 1000.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.outOfTimeThresholdGain12mEB = cms.double( 5.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EEtimeFitLimits_Upper = cms.double( 1.4 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.prefitMaxChiSqEB = cms.double( 15.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EEamplitudeFitParameters = cms.vdouble( 1.89, 1.4 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.prefitMaxChiSqEE = cms.double( 10.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EBamplitudeFitParameters = cms.vdouble( 1.138, 1.652 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EBtimeFitLimits_Upper = cms.double( 1.4 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.timealgo = cms.string( "None" )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.amplitudeThresholdEB = cms.double( 10.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.outOfTimeThresholdGain12pEE = cms.double( 1000.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.outOfTimeThresholdGain12pEB = cms.double( 5.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EEtimeNconst = cms.double( 31.8 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.outOfTimeThresholdGain61mEB = cms.double( 5.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.outOfTimeThresholdGain61mEE = cms.double( 1000.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.EEtimeConstantTerm = cms.double( 1.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.chi2ThreshEE_ = cms.double( 50.0 )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.doPrefitEE = cms.bool( True )
-#process.ecalUncalibRecHitProducerGPU.algoPSet.doPrefitEB = cms.bool( True )
-
+##    
+##    
+##    
+##    
+##    
 ##    
     
     
@@ -139,7 +101,10 @@ process.recoPath = cms.Path(
 #    *process.hfreco
 #    *process.hbheprereco
 #    process.ecalMultiFitUncalibRecHit
-    process.ecalUncalibRecHitProducerGPU
+
+    process.ecalMultiFitUncalibRecHitgpu
+    *process.ecalMultiFitUncalibRecHitGPU   #  --->     std::string label = "ecalUncalibRecHitProducerGPU";
+    
 #    *process.ecalRecHit
 #    *process.hbheprerecogpu
 )

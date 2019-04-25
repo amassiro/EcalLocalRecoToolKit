@@ -418,6 +418,7 @@ New producer:
      
     export CUDA_VISIBLE_DEVICES=0;    cmsRun ecalOnly_newProducer.py
     
+    export CUDA_VISIBLE_DEVICES=0;    cmsRun ecalOnly_newProducer_and_dump.py
     
      
      
