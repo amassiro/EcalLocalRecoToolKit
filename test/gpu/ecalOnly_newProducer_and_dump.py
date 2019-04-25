@@ -151,7 +151,8 @@ process.recoPath = cms.Path(
     ##*process.ecalUncalibRecHitProducerGPU
 
     process.ecalMultiFitUncalibRecHitgpu
-    *process.ecalMultiFitUncalibRecHitGPU   #  --->     std::string label = "ecalUncalibRecHitProducerGPU";
+    #*process.ecalMultiFitUncalibRecHitGPU   #  --->     std::string label = "ecalUncalibRecHitProducerGPU";
+    *process.ecalUncalibRecHitProducerGPU   #  --->     std::string label = "ecalUncalibRecHitProducerGPU";
 
 #    *process.ecalRecHit
 #    *process.hbheprerecogpu

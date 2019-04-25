@@ -386,6 +386,7 @@ Nvprof
     
 New producer:
 
+    
     /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/onGPU/15Apr2019/NewProducer/CMSSW_10_6_0_pre2_Patatrack/src
     
     git cms-init -x cms-patatrack
@@ -425,4 +426,23 @@ New producer:
      
      
      
-     
+    source  /data/patatrack/cmssw/cmsset_default.sh
+    
+    cmsrel CMSSW_10_6_0_pre2_Patatrack
+    
+    /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/onGPU/25Apr2019/NewProducer/CMSSW_10_6_0_pre2_Patatrack/src
+
+    git cms-init -x cms-patatrack
+
+    git cms-merge-topic vkhristenko:ecal_dev_patatrack
+    
+    scramv1 b -j 20
+    
+    
+    
+    
+    
+    
+    
+    
+    
