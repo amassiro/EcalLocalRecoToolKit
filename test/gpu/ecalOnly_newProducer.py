@@ -43,13 +43,12 @@ process.load("EventFilter.HcalRawToDigi.HcalRawToDigi_cfi")
 process.load("EventFilter.EcalRawToDigi.EcalUnpackerData_cfi")
 process.load("RecoLuminosity.LumiProducer.bunchSpacingProducer_cfi")
 
-# load both cpu and gpu plugins
-#process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_gpu_new_cfi")
-#process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_cfi")
-process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_gpu_new_cfi")
+# load gpu plugins
+#
+# ../cfipython/slc7_amd64_gcc700/RecoLocalCalo/EcalRecProducers/ecalUncalibRecHitProducerGPU_cfi.py
+#
 process.load("RecoLocalCalo.EcalRecProducers.ecalUncalibRecHitProducerGPU_cfi")
-#process.load("RecoLocalCalo.EcalRecProducers.ecalUncalibRecHitProducerGPUcfi")
-
+#
 
 process.load("RecoLocalCalo.EcalRecProducers.ecalPedestalsGPUESProducer_cfi")
 process.load("RecoLocalCalo.EcalRecProducers.ecalGainRatiosGPUESProducer_cfi")
@@ -102,8 +101,7 @@ process.recoPath = cms.Path(
 #    *process.hbheprereco
 #    process.ecalMultiFitUncalibRecHit
 
-    process.ecalMultiFitUncalibRecHitgpu
-    *process.ecalMultiFitUncalibRecHitGPU   #  --->     std::string label = "ecalUncalibRecHitProducerGPU";
+     process.ecalUncalibRecHitProducerGPU   #  --->     std::string label = "ecalUncalibRecHitProducerGPU";
     
 #    *process.ecalRecHit
 #    *process.hbheprerecogpu

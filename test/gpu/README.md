@@ -480,7 +480,28 @@ New producer:
     
     
     
+    export CUDA_VISIBLE_DEVICES=0;    cmsRun ecalOnly_newProducer.py
     
+    export CUDA_VISIBLE_DEVICES=0;    cmsRun ecalOnly_newProducer_and_dump.py
+    
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",100,0,100\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"chi2\",200,0,10,0\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitter\",400,-10,10,2\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitterError\",400,-0.001,0.5,2\)
+
+    
+
+Dump HLT configuration
+
+
+    --offline
+     
+    
+    hltGetConfiguration  /online/collisions/2018/2e34/v3.6/HLT/V4 --full --online  --data  --unprescale --process TEST --globaltag 101X_dataRun2_Prompt_v11 \
+     --input /store/relval/CMSSW_8_0_3/RelValZEE_13/GEN-SIM-DIGI-RAW-HLTDEBUG/80X_mcRun2_asymptotic_2016_v3_gs7120p2NewGTv3-v1/00000/626AD45E-D8EF-E511-9BC8-0025905A6126.root  \
+     > hlt_data.py 
+    
+    then look for: hltEcalUncalibRecHit ---> ecalMultiFitUncalibRecHit
     
     
     
