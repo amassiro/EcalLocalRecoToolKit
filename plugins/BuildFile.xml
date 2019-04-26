@@ -15,6 +15,7 @@
 <use name="Geometry/CaloTopology"/>
 
 
+<use name="HeterogeneousCore/CUDAUtilities"/>
 
 
 <flags EDM_PLUGIN="1"/>
