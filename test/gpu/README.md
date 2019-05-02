@@ -489,7 +489,9 @@ New producer:
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitter\",400,-10,10,2\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitterError\",400,-0.001,0.5,2\)
 
-    
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM1\",100,0,100\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM2\",100,0,100\)
+
     
     
     
@@ -503,20 +505,6 @@ New producer:
     
     
     
-
-
-
-    
-    source  /data/patatrack/cmssw/cmsset_default.sh
-    
-    cmsrel CMSSW_10_6_0_pre2_Patatrack
-    
-    /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/onGPU/2May2019/NewProducer/CMSSW_10_6_0_pre2_Patatrack/src
-    git cms-init -x cms-patatrack
-
-    git cms-merge-topic vkhristenko:ecal_dev_patatrack_1
-    
-    scramv1 b -j 20
     
     
 

@@ -519,14 +519,38 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _second_onlineEnergyEB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitude[irechit];    
     _second_jitterEB      [EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->jitter[irechit];    
     _second_jitterErrorEB [EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->jitterError[irechit];    
-    _second_chi2EB        [EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->chi2[irechit];        
-  }
-  
-  for (int irechit = 0; irechit < _second_sizeEE; irechit++ ) {
-    _second_onlineEnergyEE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitude[irechit];    
-    _second_jitterEE      [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->jitter[irechit];    
-    _second_jitterErrorEE [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->jitterError[irechit];    
-    _second_chi2EE        [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->chi2[irechit];        
+    _second_chi2EB        [EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->chi2[irechit];     
+      
+    _second_outOfTimeAmplitudeM5EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 0];    
+    _second_outOfTimeAmplitudeM4EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 1];    
+    _second_outOfTimeAmplitudeM3EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 2];    
+    _second_outOfTimeAmplitudeM2EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 3];    
+    _second_outOfTimeAmplitudeM1EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 4];    
+//     _NOMINAL[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit](5);                    
+    _second_outOfTimeAmplitudeP1EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 6];    
+    _second_outOfTimeAmplitudeP2EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 7];    
+    _second_outOfTimeAmplitudeP3EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 8];    
+    _second_outOfTimeAmplitudeP4EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 9];    
+                                                                                                                                          
+  }                                                                                                                                       
+                                                                                                                                          
+  for (int irechit = 0; irechit < _second_sizeEE; irechit++ ) {                                                                           
+    _second_onlineEnergyEE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitude[irechit];                
+    _second_jitterEE      [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->jitter[irechit];                   
+    _second_jitterErrorEE [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->jitterError[irechit];              
+    _second_chi2EE        [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->chi2[irechit];                     
+                                                                                                                                          
+    _second_outOfTimeAmplitudeM5EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 0];    
+    _second_outOfTimeAmplitudeM4EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 1];    
+    _second_outOfTimeAmplitudeM3EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 2];    
+    _second_outOfTimeAmplitudeM2EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 3];    
+    _second_outOfTimeAmplitudeM1EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 4];    
+    //     _NOMINAL[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit](5]);               
+    _second_outOfTimeAmplitudeP1EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 6];    
+    _second_outOfTimeAmplitudeP2EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 7];    
+    _second_outOfTimeAmplitudeP3EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 8];    
+    _second_outOfTimeAmplitudeP4EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 9];    
+    
   }
   
     
