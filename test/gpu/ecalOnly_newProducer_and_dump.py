@@ -74,28 +74,83 @@ process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_cfi")
 ##
 
 process.ecalMultiFitUncalibRecHit.algoPSet = cms.PSet( 
-      ebSpikeThreshold = cms.double( 1.042 ),
+
+      doPrefitEE = cms.bool( False ),
+      doPrefitEB = cms.bool( False ),
+
       EBtimeFitLimits_Upper = cms.double( 1.4 ),
+      EEtimeFitLimits_Upper = cms.double( 1.4 ),
+
+      EBtimeFitLimits_Lower = cms.double( 0.2 ),
       EEtimeFitLimits_Lower = cms.double( 0.2 ),
-      timealgo = cms.string( "None" ),
+
       EBtimeNconst = cms.double( 28.5 ),
+      EEtimeNconst = cms.double( 31.8 ),
+
+      ebSpikeThreshold = cms.double( 1.042 ),   # AM: not used anywhere!
+      
+      timealgo = cms.string( "None" ),
+      
       prefitMaxChiSqEE = cms.double( 10.0 ),
+      prefitMaxChiSqEB = cms.double( 25.0 ),
+
       outOfTimeThresholdGain12mEB = cms.double( 5.0 ),
       outOfTimeThresholdGain12mEE = cms.double( 1000.0 ),
+     
+      outOfTimeThresholdGain12pEB = cms.double( 5.0 ),
+      outOfTimeThresholdGain12pEE = cms.double( 1000.0 ),
+
       EEtimeFitParameters = cms.vdouble( -2.390548, 3.553628, -17.62341, 67.67538, -133.213, 140.7432, -75.41106, 16.20277 ),
-      prefitMaxChiSqEB = cms.double( 25.0 ),
-      simplifiedNoiseModelForGainSwitch = cms.bool( True ),
       EBtimeFitParameters = cms.vdouble( -2.015452, 3.130702, -12.3473, 41.88921, -82.83944, 91.01147, -50.35761, 11.05621 ),
+
+      simplifiedNoiseModelForGainSwitch = cms.bool( True ),
+      
       selectiveBadSampleCriteriaEB = cms.bool( False ),
-      dynamicPedestalsEB = cms.bool( False ),
-      useLumiInfoRunHeader = cms.bool( False ),
-      EBamplitudeFitParameters = cms.vdouble( 1.138, 1.652 ),
-      doPrefitEE = cms.bool( False ),
-      dynamicPedestalsEE = cms.bool( False ),
       selectiveBadSampleCriteriaEE = cms.bool( False ),
+
+      dynamicPedestalsEB = cms.bool( False ),
+      dynamicPedestalsEE = cms.bool( False ),
+
+      useLumiInfoRunHeader = cms.bool( False ),
+      
+      EBamplitudeFitParameters = cms.vdouble( 1.138, 1.652 ),
+      EEamplitudeFitParameters = cms.vdouble( 1.89, 1.4 ),
+
       outOfTimeThresholdGain61pEE = cms.double( 1000.0 ),
       outOfTimeThresholdGain61pEB = cms.double( 5.0 ),
+
       activeBXs = cms.vint32( -5, -4, -3, -2, -1, 0, 1, 2, 3, 4 ),
+
+      addPedestalUncertaintyEE = cms.double( 0.0 ),
+      addPedestalUncertaintyEB = cms.double( 0.0 ),
+
+      gainSwitchUseMaxSampleEB = cms.bool( True ),
+      gainSwitchUseMaxSampleEE = cms.bool( False ),  # AM TEST   Set to True ---> still bad
+
+      chi2ThreshEB_ = cms.double( 65.0 ),
+      chi2ThreshEE_ = cms.double( 50.0 ),
+
+      eePulseShape = cms.vdouble( 5.2E-5, -5.26E-5, 6.66E-5, 0.1168, 0.7575, 1.0, 0.8876, 0.6732, 0.4741, 0.3194 ),
+      ebPulseShape = cms.vdouble( 5.2E-5, -5.26E-5, 6.66E-5, 0.1168, 0.7575, 1.0, 0.8876, 0.6732, 0.4741, 0.3194 ),
+
+      mitigateBadSamplesEB = cms.bool( False ),
+      mitigateBadSamplesEE = cms.bool( False ),
+
+      amplitudeThresholdEB = cms.double( 10.0 ),
+      amplitudeThresholdEE = cms.double( 10.0 ),
+
+      ampErrorCalculation = cms.bool( False ),
+
+      kPoorRecoFlagEB = cms.bool( True ),
+      kPoorRecoFlagEE = cms.bool( False ),
+      
+      outOfTimeThresholdGain61mEB = cms.double( 5.0 ),
+      outOfTimeThresholdGain61mEE = cms.double( 1000.0 ),
+      
+      EBtimeConstantTerm = cms.double( 0.6 ),
+      EEtimeConstantTerm = cms.double( 1.0 ),
+      
+      
       EcalPulseShapeParameters = cms.PSet( 
         EEPulseShapeTemplate = cms.vdouble( 0.116442, 0.756246, 1.0, 0.897182, 0.686831, 0.491506, 0.344111, 0.245731, 0.174115, 0.123361, 0.0874288, 0.061957 ),
         EEdigiCollection = cms.string( "" ),
@@ -113,33 +168,8 @@ process.ecalMultiFitUncalibRecHit.algoPSet = cms.PSet(
         EECorrNoiseMatrixG12 = cms.vdouble( 1.0, 0.71373, 0.44825, 0.30152, 0.21609, 0.14786, 0.11772, 0.10165, 0.09465, 0.08098 ),
         UseLCcorrection = cms.untracked.bool( True ),
         EECorrNoiseMatrixG06 = cms.vdouble( 1.0, 0.71217, 0.47464, 0.34056, 0.26282, 0.20287, 0.17734, 0.16256, 0.15618, 0.14443 )
-      ),
-      doPrefitEB = cms.bool( False ),
-      addPedestalUncertaintyEE = cms.double( 0.0 ),
-      addPedestalUncertaintyEB = cms.double( 0.0 ),
-      gainSwitchUseMaxSampleEB = cms.bool( True ),
-      EEtimeNconst = cms.double( 31.8 ),
-      EEamplitudeFitParameters = cms.vdouble( 1.89, 1.4 ),
-      chi2ThreshEE_ = cms.double( 50.0 ),
-      eePulseShape = cms.vdouble( 5.2E-5, -5.26E-5, 6.66E-5, 0.1168, 0.7575, 1.0, 0.8876, 0.6732, 0.4741, 0.3194 ),
-      outOfTimeThresholdGain12pEB = cms.double( 5.0 ),
-      gainSwitchUseMaxSampleEE = cms.bool( False ),
-      mitigateBadSamplesEB = cms.bool( False ),
-      outOfTimeThresholdGain12pEE = cms.double( 1000.0 ),
-      ebPulseShape = cms.vdouble( 5.2E-5, -5.26E-5, 6.66E-5, 0.1168, 0.7575, 1.0, 0.8876, 0.6732, 0.4741, 0.3194 ),
-      ampErrorCalculation = cms.bool( False ),
-      mitigateBadSamplesEE = cms.bool( False ),
-      amplitudeThresholdEB = cms.double( 10.0 ),
-      kPoorRecoFlagEB = cms.bool( True ),
-      amplitudeThresholdEE = cms.double( 10.0 ),
-      EBtimeFitLimits_Lower = cms.double( 0.2 ),
-      kPoorRecoFlagEE = cms.bool( False ),
-      EEtimeFitLimits_Upper = cms.double( 1.4 ),
-      outOfTimeThresholdGain61mEE = cms.double( 1000.0 ),
-      EEtimeConstantTerm = cms.double( 1.0 ),
-      EBtimeConstantTerm = cms.double( 0.6 ),
-      chi2ThreshEB_ = cms.double( 65.0 ),
-      outOfTimeThresholdGain61mEB = cms.double( 5.0 )
+      )
+            
 )     
       
 ##    

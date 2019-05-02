@@ -486,13 +486,15 @@ New producer:
     
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",100,0,100\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"chi2\",200,0,10,0\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"chi2\",200,0,100,0\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitter\",400,-10,10,2\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitterError\",400,-0.001,0.5,2\)
 
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM1\",100,0,100\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM2\",100,0,100\)
 
-    
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"size\",200,0,30000\)
+
     
     
     /data/patatrack/vkhriste/data/ecal/test.withcheck.root

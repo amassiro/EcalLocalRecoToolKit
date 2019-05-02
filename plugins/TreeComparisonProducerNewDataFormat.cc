@@ -386,11 +386,11 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _outOfTimeAmplitudeM2EB[ixtal] = -99;
     _outOfTimeAmplitudeM3EB[ixtal] = -99;
     _outOfTimeAmplitudeM4EB[ixtal] = -99;
+    _outOfTimeAmplitudeM5EB[ixtal] = -99;
     _outOfTimeAmplitudeP1EB[ixtal] = -99;
     _outOfTimeAmplitudeP2EB[ixtal] = -99;
     _outOfTimeAmplitudeP3EB[ixtal] = -99;
     _outOfTimeAmplitudeP4EB[ixtal] = -99;
-    _outOfTimeAmplitudeM5EB[ixtal] = -99;
     
     _second_onlineEnergyEB[ixtal] = -99;
     _second_chi2EB[ixtal] = -99;
@@ -401,11 +401,11 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _second_outOfTimeAmplitudeM2EB[ixtal] = -99;
     _second_outOfTimeAmplitudeM3EB[ixtal] = -99;
     _second_outOfTimeAmplitudeM4EB[ixtal] = -99;
+    _second_outOfTimeAmplitudeM5EB[ixtal] = -99;
     _second_outOfTimeAmplitudeP1EB[ixtal] = -99;
     _second_outOfTimeAmplitudeP2EB[ixtal] = -99;
     _second_outOfTimeAmplitudeP3EB[ixtal] = -99;
     _second_outOfTimeAmplitudeP4EB[ixtal] = -99;
-    _second_outOfTimeAmplitudeM5EB[ixtal] = -99;
   }
   for (int ixtal=0; ixtal < 14648; ixtal++) {
     //---- Fill flag for this crystal
@@ -418,11 +418,11 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _outOfTimeAmplitudeM2EE[ixtal] = -99;
     _outOfTimeAmplitudeM3EE[ixtal] = -99;
     _outOfTimeAmplitudeM4EE[ixtal] = -99;
+    _outOfTimeAmplitudeM5EE[ixtal] = -99;
     _outOfTimeAmplitudeP1EE[ixtal] = -99;
     _outOfTimeAmplitudeP2EE[ixtal] = -99;
     _outOfTimeAmplitudeP3EE[ixtal] = -99;
     _outOfTimeAmplitudeP4EE[ixtal] = -99;
-    _outOfTimeAmplitudeM5EE[ixtal] = -99;
     
     _second_onlineEnergyEE[ixtal] = -99;
     _second_chi2EE[ixtal] = -99;
@@ -433,11 +433,11 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _second_outOfTimeAmplitudeM2EE[ixtal] = -99;
     _second_outOfTimeAmplitudeM3EE[ixtal] = -99;
     _second_outOfTimeAmplitudeM4EE[ixtal] = -99;
+    _second_outOfTimeAmplitudeM5EE[ixtal] = -99;
     _second_outOfTimeAmplitudeP1EE[ixtal] = -99;
     _second_outOfTimeAmplitudeP2EE[ixtal] = -99;
     _second_outOfTimeAmplitudeP3EE[ixtal] = -99;
     _second_outOfTimeAmplitudeP4EE[ixtal] = -99;
-    _second_outOfTimeAmplitudeM5EE[ixtal] = -99;
   }
   
   
@@ -530,7 +530,12 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _second_outOfTimeAmplitudeP1EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 6];    
     _second_outOfTimeAmplitudeP2EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 7];    
     _second_outOfTimeAmplitudeP3EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 8];    
-    _second_outOfTimeAmplitudeP4EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 9];    
+    _second_outOfTimeAmplitudeP4EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 9];   
+    
+    
+    if (fabs(second_ebrechits->amplitudesAll[irechit*10 + 4] - second_ebrechits->amplitude[irechit]) > 0.01) {
+      std::cout << " different eb??? --> " << second_ebrechits->amplitudesAll[irechit*10 + 5] << " != " << second_ebrechits->amplitude[irechit] << std::endl;
+    }
                                                                                                                                           
   }                                                                                                                                       
                                                                                                                                           
@@ -550,6 +555,11 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _second_outOfTimeAmplitudeP2EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 7];    
     _second_outOfTimeAmplitudeP3EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 8];    
     _second_outOfTimeAmplitudeP4EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 9];    
+    
+    if (fabs(second_eerechits->amplitudesAll[irechit*10 + 4] != second_eerechits->amplitude[irechit]) > 0.01) {
+      std::cout << " different ee??? --> " << second_eerechits->amplitudesAll[irechit*10 + 5] << " != " << second_eerechits->amplitude[irechit] << std::endl;
+    }
+
     
   }
   
