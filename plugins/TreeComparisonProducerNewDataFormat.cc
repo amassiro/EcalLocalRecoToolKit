@@ -98,7 +98,8 @@
 
 //---- for new DataFormats
 
-#include "DataFormats/EcalRecHitSoA/interface/EcalUncalibratedRecHit_soa.h"
+// #include "DataFormats/EcalRecHitSoA/interface/EcalUncalibratedRecHit_soa.h"
+#include "CUDADataFormats/EcalRecHitSoA/interface/EcalUncalibratedRecHit_soa.h"
 
 // 
 // ecal::UncalibratedRecHit<ecal::Tag::soa>    "ecalMultiFitUncalibRecHitgpu"   "EcalUncalibRecHitsEBgpunew"   "MyReco"   
