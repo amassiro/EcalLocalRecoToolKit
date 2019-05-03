@@ -127,25 +127,25 @@ process.ecalMultiFitUncalibRecHit.algoPSet = cms.PSet(
       gainSwitchUseMaxSampleEB = cms.bool( True ),
       gainSwitchUseMaxSampleEE = cms.bool( False ),  # AM TEST   Set to True ---> still bad
 
-      chi2ThreshEB_ = cms.double( 65.0 ),
-      chi2ThreshEE_ = cms.double( 50.0 ),
+      chi2ThreshEB_ = cms.double( 65.0 ),       # AM: never used in the code???
+      chi2ThreshEE_ = cms.double( 50.0 ),       # AM: never used in the code???
 
-      eePulseShape = cms.vdouble( 5.2E-5, -5.26E-5, 6.66E-5, 0.1168, 0.7575, 1.0, 0.8876, 0.6732, 0.4741, 0.3194 ),
-      ebPulseShape = cms.vdouble( 5.2E-5, -5.26E-5, 6.66E-5, 0.1168, 0.7575, 1.0, 0.8876, 0.6732, 0.4741, 0.3194 ),
+      eePulseShape = cms.vdouble( 5.2E-5, -5.26E-5, 6.66E-5, 0.1168, 0.7575, 1.0, 0.8876, 0.6732, 0.4741, 0.3194 ),         # AM: never used in the code???
+      ebPulseShape = cms.vdouble( 5.2E-5, -5.26E-5, 6.66E-5, 0.1168, 0.7575, 1.0, 0.8876, 0.6732, 0.4741, 0.3194 ),         # AM: never used in the code???
 
       mitigateBadSamplesEB = cms.bool( False ),
       mitigateBadSamplesEE = cms.bool( False ),
 
-      amplitudeThresholdEB = cms.double( 10.0 ),
-      amplitudeThresholdEE = cms.double( 10.0 ),
+      amplitudeThresholdEB = cms.double( 10.0 ),      # AM:  used for timing.   Consider flagging as kOutOfTime only if above noise
+      amplitudeThresholdEE = cms.double( 10.0 ),      # AM:  used for timing.   Consider flagging as kOutOfTime only if above noise
 
       ampErrorCalculation = cms.bool( False ),
 
-      kPoorRecoFlagEB = cms.bool( True ),
-      kPoorRecoFlagEE = cms.bool( False ),
+      kPoorRecoFlagEB = cms.bool( True ),        # AM: never used in the code???
+      kPoorRecoFlagEE = cms.bool( False ),       # AM: never used in the code???
       
-      outOfTimeThresholdGain61mEB = cms.double( 5.0 ),
-      outOfTimeThresholdGain61mEE = cms.double( 1000.0 ),
+      outOfTimeThresholdGain61mEB = cms.double( 5.0 ),     # AM: used for timing
+      outOfTimeThresholdGain61mEE = cms.double( 1000.0 ),  # AM: used for timing
       
       EBtimeConstantTerm = cms.double( 0.6 ),
       EEtimeConstantTerm = cms.double( 1.0 ),
