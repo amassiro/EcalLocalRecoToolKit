@@ -535,6 +535,16 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     
     if (fabs(second_ebrechits->amplitudesAll[irechit*10 + 5] - second_ebrechits->amplitude[irechit]) > 0.01) {
       std::cout << " different eb??? all!=single  --> " << second_ebrechits->amplitudesAll[irechit*10 + 5] << " != " << second_ebrechits->amplitude[irechit] << std::endl;
+      std::cout << "                 0 = " << second_ebrechits->amplitudesAll[irechit*10 + 0] << std::endl;
+      std::cout << "                 1 = " << second_ebrechits->amplitudesAll[irechit*10 + 1] << std::endl;
+      std::cout << "                 2 = " << second_ebrechits->amplitudesAll[irechit*10 + 2] << std::endl;
+      std::cout << "                 3 = " << second_ebrechits->amplitudesAll[irechit*10 + 3] << std::endl;
+      std::cout << "                 4 = " << second_ebrechits->amplitudesAll[irechit*10 + 4] << std::endl;
+      std::cout << "                 5 = " << second_ebrechits->amplitudesAll[irechit*10 + 5] << std::endl;
+      std::cout << "                 6 = " << second_ebrechits->amplitudesAll[irechit*10 + 6] << std::endl;
+      std::cout << "                 7 = " << second_ebrechits->amplitudesAll[irechit*10 + 7] << std::endl;
+      std::cout << "                 8 = " << second_ebrechits->amplitudesAll[irechit*10 + 8] << std::endl;
+      std::cout << "                 9 = " << second_ebrechits->amplitudesAll[irechit*10 + 9] << std::endl;
     }
                                                                                                                                           
   }                                                                                                                                       
@@ -558,6 +568,16 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     
     if (fabs(second_eerechits->amplitudesAll[irechit*10 + 5] - second_eerechits->amplitude[irechit]) > 0.01) {
       std::cout << " different ee??? all!=single  --> " << second_eerechits->amplitudesAll[irechit*10 + 5] << " != " << second_eerechits->amplitude[irechit] << std::endl;
+      std::cout << "                 0 = " << second_eerechits->amplitudesAll[irechit*10 + 0] << std::endl;
+      std::cout << "                 1 = " << second_eerechits->amplitudesAll[irechit*10 + 1] << std::endl;
+      std::cout << "                 2 = " << second_eerechits->amplitudesAll[irechit*10 + 2] << std::endl;
+      std::cout << "                 3 = " << second_eerechits->amplitudesAll[irechit*10 + 3] << std::endl;
+      std::cout << "                 4 = " << second_eerechits->amplitudesAll[irechit*10 + 4] << std::endl;
+      std::cout << "                 5 = " << second_eerechits->amplitudesAll[irechit*10 + 5] << std::endl;
+      std::cout << "                 6 = " << second_eerechits->amplitudesAll[irechit*10 + 6] << std::endl;
+      std::cout << "                 7 = " << second_eerechits->amplitudesAll[irechit*10 + 7] << std::endl;
+      std::cout << "                 8 = " << second_eerechits->amplitudesAll[irechit*10 + 8] << std::endl;
+      std::cout << "                 9 = " << second_eerechits->amplitudesAll[irechit*10 + 9] << std::endl;
     }
 
     
