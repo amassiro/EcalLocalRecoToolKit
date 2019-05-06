@@ -42,7 +42,7 @@ source = cms.Source( "FedRawDataInputSource",
 
     fileListMode = cms.untracked.bool( True ),          # False
     fileNames = cms.untracked.vstring(
-        '/data/patatrack/store/raw/Run2018D/JetHT/RAW/v1/000/321/177/00000/run321177_ls0142_index000000.raw',
+        #'/data/patatrack/store/raw/Run2018D/JetHT/RAW/v1/000/321/177/00000/run321177_ls0142_index000000.raw',
         '/data/patatrack/store/raw/Run2018D/JetHT/RAW/v1/000/321/177/00000/run321177_ls0142_index000001.raw',
         '/data/patatrack/store/raw/Run2018D/JetHT/RAW/v1/000/321/177/00000/run321177_ls0142_index000002.raw',
         '/data/patatrack/store/raw/Run2018D/JetHT/RAW/v1/000/321/177/00000/run321177_ls0142_index000003.raw',

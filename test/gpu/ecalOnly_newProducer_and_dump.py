@@ -23,12 +23,19 @@ from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, '102X_dataRun2_HLT_v2', '')
 
 
+
+
 process.maxEvents = cms.untracked.PSet(
     #input = cms.untracked.int32(4200)
-    #input = cms.untracked.int32(100)
-    input = cms.untracked.int32(1)
+    input = cms.untracked.int32(100)  # ---> very bad!
+    #input = cms.untracked.int32(1) #  ---> good???
+    #input = cms.untracked.int32(2)  #  ---> bad
     #input = cms.untracked.int32(10)
 )
+
+
+
+
 
 # load data using the DAQ source
 import sys, os, inspect
@@ -68,6 +75,12 @@ process.load("RecoLocalCalo.EcalRecProducers.ecalTimeCalibConstantsGPUESProducer
 # load cpu plugins
 process.load("RecoLocalCalo.EcalRecProducers.ecalMultiFitUncalibRecHit_cfi")
 
+
+#
+# skip event
+#process.source.skipEvents=cms.untracked.uint32(2)   # not doing anything!!!! Due to different "source", HLT version?
+#
+#
 
 
 ##
