@@ -506,8 +506,20 @@ New producer:
 
     
     
+    export CUDA_VISIBLE_DEVICES=0;    cmsRun ecalOnly_newProducer_and_dump_regularInputs.py
+    -> standard root file as input
     
     
+    export CUDA_VISIBLE_DEVICES=0;    cmsRun raw2digi_ecalonly_patatrack_and_dump_Viktor.py
+    
+    
+    
+    
+Test from scratch:
+
+    /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/onGPU/7May2019/NewProducer/CMSSW_10_6_0_pre2_Patatrack/src
+    
+
     
 
 Dump HLT configuration
