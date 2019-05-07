@@ -8,6 +8,7 @@ void drawDifferenceOne (std::string name, int numbin, float min, float max, int 
   TString cut = Form ("1");
 //   TString cut = Form ("event<1520");   ---> still bad in EE
   //   cut = Form ("chi2EB==second_chi2EB");
+//   cut = Form ("flagsEB==second_flagsEB && flagsEE==second_flagsEE");
   
   TH1F* h_EB = new TH1F("h_EB", "", 1000,-0.2,2.2);
   TCanvas* cc_ratio_EB = new TCanvas ("cc_ratio_EB", "Ratio EB", 800, 600);

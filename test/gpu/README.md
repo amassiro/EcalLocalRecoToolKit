@@ -495,6 +495,7 @@ New producer:
 
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"size\",200,0,30000\)
 
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"flags\",200,-100,100,0\)
     
     
     /data/patatrack/vkhriste/data/ecal/test.withcheck.root
@@ -519,7 +520,10 @@ Test from scratch:
 
     /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/onGPU/7May2019/NewProducer/CMSSW_10_6_0_pre2_Patatrack/src
     
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",100,0,100\)
+    
 
+    
     
 
 Dump HLT configuration

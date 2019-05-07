@@ -188,7 +188,8 @@ private:
   float _outOfTimeAmplitudeP4EE[14648];
   float _outOfTimeAmplitudeM5EB[61200];
   float _outOfTimeAmplitudeM5EE[14648];
-  
+  int   _flagsEB[61200];
+  int   _flagsEE[14648];
   
   
   float _second_onlineEnergyEB[61200];
@@ -221,6 +222,8 @@ private:
   float _second_outOfTimeAmplitudeP4EE[14648];
   float _second_outOfTimeAmplitudeM5EB[61200];
   float _second_outOfTimeAmplitudeM5EE[14648];
+  int   _second_flagsEB[61200];
+  int   _second_flagsEE[14648];
   
 };
 
@@ -288,7 +291,9 @@ TreeComparisonProducerNewDataFormat::TreeComparisonProducerNewDataFormat(const e
   outTree->Branch("outOfTimeAmplitudeM5EE",       _outOfTimeAmplitudeM5EE,    "outOfTimeAmplitudeM5EE[14648]/F");
   outTree->Branch("sizeEB",             &_sizeEB,           "sizeEB/I");
   outTree->Branch("sizeEE",             &_sizeEE,           "sizeEE/I");
- 
+  outTree->Branch("flagsEB",       _flagsEB,    "flagsEB[61200]/I");
+  outTree->Branch("flagsEE",       _flagsEE,    "flagsEE[14648]/I");
+  
   outTree->Branch("second_onlineEnergyEB",       _second_onlineEnergyEB,    "second_onlineEnergyEB[61200]/F");
   outTree->Branch("second_onlineEnergyEE",       _second_onlineEnergyEE,    "second_onlineEnergyEE[14648]/F");
   outTree->Branch("second_chi2EB",       _second_chi2EB,    "second_chi2EB[61200]/F");
@@ -319,6 +324,8 @@ TreeComparisonProducerNewDataFormat::TreeComparisonProducerNewDataFormat(const e
   outTree->Branch("second_outOfTimeAmplitudeM5EE",       _second_outOfTimeAmplitudeM5EE,    "second_outOfTimeAmplitudeM5EE[14648]/F");
   outTree->Branch("second_sizeEB",             &_second_sizeEB,           "second_sizeEB/I");
   outTree->Branch("second_sizeEE",             &_second_sizeEE,           "second_sizeEE/I");
+  outTree->Branch("second_flagsEB",       _second_flagsEB,    "second_flagsEB[61200]/I");
+  outTree->Branch("second_flagsEE",       _second_flagsEE,    "second_flagsEE[14648]/I");
   
 }
 
@@ -391,6 +398,7 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _outOfTimeAmplitudeP2EB[ixtal] = -99;
     _outOfTimeAmplitudeP3EB[ixtal] = -99;
     _outOfTimeAmplitudeP4EB[ixtal] = -99;
+    _flagsEB[ixtal] = -99;
     
     _second_onlineEnergyEB[ixtal] = -99;
     _second_chi2EB[ixtal] = -99;
@@ -405,7 +413,9 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _second_outOfTimeAmplitudeP1EB[ixtal] = -99;
     _second_outOfTimeAmplitudeP2EB[ixtal] = -99;
     _second_outOfTimeAmplitudeP3EB[ixtal] = -99;
-    _second_outOfTimeAmplitudeP4EB[ixtal] = -99;
+    _second_outOfTimeAmplitudeP4EB[ixtal] = -99;  
+    _second_flagsEB[ixtal] = -99;
+    
   }
   for (int ixtal=0; ixtal < 14648; ixtal++) {
     //---- Fill flag for this crystal
@@ -423,6 +433,7 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _outOfTimeAmplitudeP2EE[ixtal] = -99;
     _outOfTimeAmplitudeP3EE[ixtal] = -99;
     _outOfTimeAmplitudeP4EE[ixtal] = -99;
+    _flagsEE[ixtal] = -99;
     
     _second_onlineEnergyEE[ixtal] = -99;
     _second_chi2EE[ixtal] = -99;
@@ -438,6 +449,7 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _second_outOfTimeAmplitudeP2EE[ixtal] = -99;
     _second_outOfTimeAmplitudeP3EE[ixtal] = -99;
     _second_outOfTimeAmplitudeP4EE[ixtal] = -99;
+    _second_flagsEE[ixtal] = -99;
   }
   
   
@@ -478,6 +490,7 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
   for (EcalUncalibratedRecHitCollection::const_iterator itrechit = ebrechits->begin(); itrechit != ebrechits->end(); itrechit++ ) {
     _onlineEnergyEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitude();    
     _chi2EB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->chi2();    
+    _flagsEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->flags();    
     _jitterEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->jitter();    
     _jitterErrorEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->jitterError();    
     _amplitudeErrorEB[EBDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitudeError();    
@@ -496,6 +509,7 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
   for (EcalUncalibratedRecHitCollection::const_iterator itrechit = eerechits->begin(); itrechit != eerechits->end(); itrechit++ ) {
     _onlineEnergyEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitude();
     _chi2EE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->chi2();
+    _flagsEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->flags();    
     _jitterEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->jitter();  
     _jitterErrorEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->jitterError();  
     _amplitudeErrorEE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->amplitudeError();
@@ -520,7 +534,10 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _second_jitterEB      [EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->jitter[irechit];    
     _second_jitterErrorEB [EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->jitterError[irechit];    
     _second_chi2EB        [EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->chi2[irechit];     
-      
+    _second_flagsEB       [EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->flags[irechit];     
+        
+    
+    
     _second_outOfTimeAmplitudeM5EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 0];    
     _second_outOfTimeAmplitudeM4EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 1];    
     _second_outOfTimeAmplitudeM3EB[EBDetId(second_ebrechits->did[irechit]).hashedIndex()] =  second_ebrechits->amplitudesAll[irechit*10 + 2];    
@@ -554,7 +571,8 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _second_jitterEE      [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->jitter[irechit];                   
     _second_jitterErrorEE [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->jitterError[irechit];              
     _second_chi2EE        [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->chi2[irechit];                     
-                                                                                                                                          
+    _second_flagsEE       [EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->flags[irechit];     
+    
     _second_outOfTimeAmplitudeM5EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 0];    
     _second_outOfTimeAmplitudeM4EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 1];    
     _second_outOfTimeAmplitudeM3EE[EEDetId(second_eerechits->did[irechit]).hashedIndex()] =  second_eerechits->amplitudesAll[irechit*10 + 2];    
