@@ -126,7 +126,7 @@ process.options = cms.untracked.PSet( wantSummary = cms.untracked.bool(True),
 # Files to process
 #-----------------
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(10)
     )
 
 process.source = cms.Source(
