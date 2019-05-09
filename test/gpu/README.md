@@ -496,8 +496,10 @@ New producer:
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"size\",200,0,30000\)
 
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"flags\",200,-100,100,0\)
-    
-    
+
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"hashindex\",70000,0,70000\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"hashindex\",1000,0,70000\)
+        
     /data/patatrack/vkhriste/data/ecal/test.withcheck.root
                                        test.withoutcheck.root
                                        
@@ -513,6 +515,27 @@ New producer:
     
     export CUDA_VISIBLE_DEVICES=0;    cmsRun raw2digi_ecalonly_patatrack_and_dump_Viktor.py
     
+    
+    
+    TTree* tree = (TTree*) _file0->Get("TreeComparisonProducer/tree");
+    tree->Scan("hashindexEE:onlineEnergyEE:second_onlineEnergyEE", "((onlineEnergyEE/second_onlineEnergyEE)>1.01 || (onlineEnergyEE/second_onlineEnergyEE)<0.99 ) && onlineEnergyEE>0 && second_onlineEnergyEE>0 ")
+    TTree* tree = (TTree*) _file0->Get("TreeComparisonProducer/tree");
+    tree->Scan("hashindexEB:onlineEnergyEB:second_onlineEnergyEB", "((onlineEnergyEB/second_onlineEnergyEB)>1.01 || (onlineEnergyEB/second_onlineEnergyEB)<0.99 ) && onlineEnergyEB>0 && second_onlineEnergyEB>0 ")
+    
+    
+    
+*        0 *     1458 *      1458 * 1.2101261 * 6.1945638 *
+*        0 *     1459 *      1459 * 1.9038943 * 3.5288763 *
+*        0 *     1461 *      1461 * 5.9432377 * 12.865108 *
+*        0 *     1462 *      1462 * 19.937110 * 23.918472 *
+*        0 *     1481 *      1481 * 3.1761832 * 4.3149056 *
+*        0 *     1499 *      1499 * 0.6796088 * 44.111030 *
+*        0 *     8791 *      8791 * 0.2726382 * 3.2011306 *
+*        0 *     8792 *      8792 * 7.2138409 * 11.518924 *
+*        0 *     8794 *      8794 * 7.7847533 * 13.261651 *
+*        0 *     8803 *      8803 * 2.7962305 * 4.1678352 *
+
+
     
     
     

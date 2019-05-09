@@ -27,9 +27,9 @@ process.GlobalTag = GlobalTag(process.GlobalTag, '102X_dataRun2_HLT_v2', '')
 
 process.maxEvents = cms.untracked.PSet(
     #input = cms.untracked.int32(4200)
-    input = cms.untracked.int32(100)  # ---> very bad!
+    #input = cms.untracked.int32(100)  # ---> very bad!
     #input = cms.untracked.int32(1) #  ---> good???
-    #input = cms.untracked.int32(2)  #  ---> bad
+    input = cms.untracked.int32(2)  #  ---> bad
     #input = cms.untracked.int32(10)
 )
 
