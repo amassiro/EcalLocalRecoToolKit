@@ -567,6 +567,7 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     
     if (fabs(second_ebrechits->amplitudesAll[irechit*10 + 5] - second_ebrechits->amplitude[irechit]) > 0.01) {
       std::cout << " different eb??? all!=single  --> " << second_ebrechits->amplitudesAll[irechit*10 + 5] << " != " << second_ebrechits->amplitude[irechit] << std::endl;
+      std::cout << "           hashedIndex = " << EBDetId(second_ebrechits->did[irechit]).hashedIndex() << std::endl;
       std::cout << "                 0 = " << second_ebrechits->amplitudesAll[irechit*10 + 0] << std::endl;
       std::cout << "                 1 = " << second_ebrechits->amplitudesAll[irechit*10 + 1] << std::endl;
       std::cout << "                 2 = " << second_ebrechits->amplitudesAll[irechit*10 + 2] << std::endl;
@@ -602,6 +603,7 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     
     if (fabs(second_eerechits->amplitudesAll[irechit*10 + 5] - second_eerechits->amplitude[irechit]) > 0.01) {
       std::cout << " different ee??? all!=single  --> " << second_eerechits->amplitudesAll[irechit*10 + 5] << " != " << second_eerechits->amplitude[irechit] << std::endl;
+      std::cout << "           hashedIndex = " << EEDetId(second_eerechits->did[irechit]).hashedIndex() << std::endl;
       std::cout << "                 0 = " << second_eerechits->amplitudesAll[irechit*10 + 0] << std::endl;
       std::cout << "                 1 = " << second_eerechits->amplitudesAll[irechit*10 + 1] << std::endl;
       std::cout << "                 2 = " << second_eerechits->amplitudesAll[irechit*10 + 2] << std::endl;
