@@ -519,6 +519,9 @@ New producer:
     
     TTree* tree = (TTree*) _file0->Get("TreeComparisonProducer/tree");
     tree->Scan("hashindexEE:onlineEnergyEE:second_onlineEnergyEE", "((onlineEnergyEE/second_onlineEnergyEE)>1.01 || (onlineEnergyEE/second_onlineEnergyEE)<0.99 ) && onlineEnergyEE>0 && second_onlineEnergyEE>0 ")
+    tree->Scan("hashindexEE:second_hashindexEE:onlineEnergyEE:second_onlineEnergyEE", "((onlineEnergyEE/second_onlineEnergyEE)>1.01 || (onlineEnergyEE/second_onlineEnergyEE)<0.99 ) && onlineEnergyEE>0 && second_onlineEnergyEE>0 ")
+
+    
     TTree* tree = (TTree*) _file0->Get("TreeComparisonProducer/tree");
     tree->Scan("hashindexEB:onlineEnergyEB:second_onlineEnergyEB", "((onlineEnergyEB/second_onlineEnergyEB)>1.01 || (onlineEnergyEB/second_onlineEnergyEB)<0.99 ) && onlineEnergyEB>0 && second_onlineEnergyEB>0 ")
     
