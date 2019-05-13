@@ -515,6 +515,9 @@ New producer:
     
     export CUDA_VISIBLE_DEVICES=0;    cmsRun raw2digi_ecalonly_patatrack_and_dump_Viktor.py
     
+    export CUDA_VISIBLE_DEVICES=0;    cmsRun raw2digi_ecalonly_patatrack_and_dump_Viktor.py &> tmp.txt
+
+    
     
     
     TTree* tree = (TTree*) _file0->Get("TreeComparisonProducer/tree");
