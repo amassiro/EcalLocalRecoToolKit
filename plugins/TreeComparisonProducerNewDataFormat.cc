@@ -635,13 +635,10 @@ TreeComparisonProducerNewDataFormat::analyze(const edm::Event& iEvent, const edm
     _outOfTimeAmplitudeP3EE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->outOfTimeAmplitude(8);
     _outOfTimeAmplitudeP4EE[EEDetId(itrechit->id()).hashedIndex()] =  itrechit->outOfTimeAmplitude(9);
     
-//     std::cout << " It is ok : " << EEDetId(itrechit->id()).hashedIndex() << " != " << std::endl;
-//     std::cout << " It is ok : " << ecal::multifit::hashedIndexEE(itrechit->id()) << " != " << std::endl;
-    std::cout << " It is ok : " << hashedIndexEE(itrechit->id()) << " != " << std::endl;
-    //     std::cout << " It is ok : " << EEDetId(itrechit->id()).hashedIndex() << " != " << ecal::multifit::hashedIndexEE(itrechit->id()) << " TEST "  << std::endl;
-//     if ((int) EEDetId(itrechit->id()).hashedIndex() != (int) ecal::multifit::hashedIndexEE(itrechit->id())) {
-//       std::cout << " Problem: " << EEDetId(itrechit->id()).hashedIndex() << " != " << ecal::multifit::hashedIndexEE(itrechit->id())  << std::endl;
-//     }
+        std::cout << " It is ok : " << EEDetId(itrechit->id()).hashedIndex() << " != " << hashedIndexEE(itrechit->id()) << " TEST "  << std::endl;
+    if ((int) EEDetId(itrechit->id()).hashedIndex() != (int) hashedIndexEE(itrechit->id())) {
+      std::cout << " Problem: " << EEDetId(itrechit->id()).hashedIndex() << " != " << hashedIndexEE(itrechit->id())  << std::endl;
+    }
     
     
   }
