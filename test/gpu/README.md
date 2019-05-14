@@ -486,6 +486,7 @@ New producer:
     
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",100,0,100\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"chi2\",200,0,10,0\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"chi2\",1000,0,10,0\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"chi2\",200,0,100,0\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitter\",400,-10,10,2\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"jitterError\",400,-0.001,0.5,2\)
@@ -517,6 +518,7 @@ New producer:
     
     export CUDA_VISIBLE_DEVICES=0;    cmsRun raw2digi_ecalonly_patatrack_and_dump_Viktor.py &> tmp.txt
 
+    export CUDA_VISIBLE_DEVICES=0;    cmsRun ecalOnly_newProducer_and_dump.py
     
     
     
