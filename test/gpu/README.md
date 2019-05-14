@@ -529,7 +529,10 @@ New producer:
     tree->Scan("hashindexEB:onlineEnergyEB:second_onlineEnergyEB", "((onlineEnergyEB/second_onlineEnergyEB)>1.01 || (onlineEnergyEB/second_onlineEnergyEB)<0.99 ) && onlineEnergyEB>0 && second_onlineEnergyEB>0 ")
     
     
-    
+     It is ok : 1459 != 1505 TEST 
+     Problem: 1459 != 1505
+
+     
 *        0 *     1458 *      1458 * 1.2101261 * 6.1945638 *
 *        0 *     1459 *      1459 * 1.9038943 * 3.5288763 *
 *        0 *     1461 *      1461 * 5.9432377 * 12.865108 *
@@ -542,7 +545,12 @@ New producer:
 *        0 *     8803 *      8803 * 2.7962305 * 4.1678352 *
 
 
-    
+Commit
+
+    git branch amassiro-fix-matrix
+
+    git push my-cmssw amassiro-fix-matrix
+
     
     
 Test from scratch:
