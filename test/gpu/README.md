@@ -530,21 +530,6 @@ New producer:
     TTree* tree = (TTree*) _file0->Get("TreeComparisonProducer/tree");
     tree->Scan("hashindexEB:onlineEnergyEB:second_onlineEnergyEB", "((onlineEnergyEB/second_onlineEnergyEB)>1.01 || (onlineEnergyEB/second_onlineEnergyEB)<0.99 ) && onlineEnergyEB>0 && second_onlineEnergyEB>0 ")
     
-    
-     It is ok : 1459 != 1505 TEST 
-     Problem: 1459 != 1505
-
-     
-*        0 *     1458 *      1458 * 1.2101261 * 6.1945638 *
-*        0 *     1459 *      1459 * 1.9038943 * 3.5288763 *
-*        0 *     1461 *      1461 * 5.9432377 * 12.865108 *
-*        0 *     1462 *      1462 * 19.937110 * 23.918472 *
-*        0 *     1481 *      1481 * 3.1761832 * 4.3149056 *
-*        0 *     1499 *      1499 * 0.6796088 * 44.111030 *
-*        0 *     8791 *      8791 * 0.2726382 * 3.2011306 *
-*        0 *     8792 *      8792 * 7.2138409 * 11.518924 *
-*        0 *     8794 *      8794 * 7.7847533 * 13.261651 *
-*        0 *     8803 *      8803 * 2.7962305 * 4.1678352 *
 
 
 Commit
@@ -553,16 +538,6 @@ Commit
 
     git push my-cmssw amassiro-fix-matrix
 
-    
-    
-Test from scratch:
-
-    /afs/cern.ch/user/a/amassiro/work/ECAL/GPU/onGPU/7May2019/NewProducer/CMSSW_10_6_0_pre2_Patatrack/src
-    
-    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"onlineEnergy\",100,0,100\)
-    
-
-    
     
 
 Dump HLT configuration
