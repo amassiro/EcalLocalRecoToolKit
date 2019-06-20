@@ -493,7 +493,14 @@ New producer:
 
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM1\",100,0,100\)
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM2\",100,0,100\)
-
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM3\",100,0,100\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM4\",100,0,100\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeM5\",100,0,100\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP1\",100,0,100\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP2\",100,0,100\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP3\",100,0,100\)
+    r99t output.root    ../plot/drawDifferenceOne.cxx\(\"outOfTimeAmplitudeP4\",100,0,100\)
+    
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"size\",200,0,30000\)
 
     r99t output.root    ../plot/drawDifferenceOne.cxx\(\"flags\",200,-100,100,0\)
