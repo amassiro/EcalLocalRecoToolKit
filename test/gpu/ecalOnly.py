@@ -24,7 +24,7 @@ process.GlobalTag = GlobalTag(process.GlobalTag, '102X_dataRun2_HLT_v2', '')
 
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10)
+    input = cms.untracked.int32(100)
 )
 
 # load data using the DAQ source
