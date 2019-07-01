@@ -185,7 +185,7 @@ process.schedule = cms.Schedule(
    process.digiPath,
    process.recoPath,
 #    process.ecalecalLocalRecoSequence
-   process.finalize
+   #process.finalize
 )
 
 process.options = cms.untracked.PSet(
