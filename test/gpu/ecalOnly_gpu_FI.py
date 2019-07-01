@@ -181,11 +181,11 @@ process.recoPath = cms.Path(
 )
 
 process.schedule = cms.Schedule(
-#    process.bunchSpacing,
-#    process.digiPath,
-#    process.recoPath,
+   process.bunchSpacing,
+   process.digiPath,
+   process.recoPath,
 #    process.ecalecalLocalRecoSequence
-#    process.finalize
+   process.finalize
 )
 
 process.options = cms.untracked.PSet(
